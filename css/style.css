@@ -6,6 +6,17 @@ body {
 
 h1, h2, h3, h4, h5 {
 	font-family: 'Unica One', cursive;
+	text-shadow: 2px 2px 2px #333;
+	padding: 2px 2px;
+}
+
+h1 {
+	border-bottom: 1px dotted #ddd;
+}
+
+.made-by {
+	color: #000;
+	font-family: 'Unica One', cursive;
 }
 
 .wrapper {
