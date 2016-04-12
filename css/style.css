@@ -10,16 +10,43 @@ h1, h2, h3, h4, h5 {
 	padding: 2px 2px;
 }
 
-h1 {
+header h1 {
 	border-bottom: 1px dotted #ddd;
+	margin: 20px 0 5px 0;
+}
+
+h3 {
+	cursor: pointer;
+	margin: 2px 0;
 }
 
 .made-by {
 	color: #000;
 	font-family: 'Unica One', cursive;
+	margin: 5px;
 }
 
 .wrapper {
 	width: 90%;
 	margin: auto;
+}
+.rules-content {
+	display: none;
+	padding: 20px;
+	background-color: rgba(255, 255, 255, 0.2);
+	color: #000;
+	box-shadow: 2px 2px 2px #333;
+	cursor: pointer;
+}
+
+img.rules-picture {
+	float: right;
+	padding: 10px 10px 20px 20px;
+	width: 25%;
+}
+
+span.print {
+	font-size: 1.4rem;
+	font-weight: bold;
+	cursor: pointer;
 }
