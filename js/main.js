@@ -23,10 +23,10 @@ rulesHeadline.click(function(){
 });
 
 //prints out the rules on click
-var printtherules = $('span.print');
-printtherules.click(function(){
-	print();
-});
+// var printtherules = $('span.print');
+// printtherules.click(function(){
+// 	print();
+// });
 
 //makes the content dissapear on click
 content.click(function(){
