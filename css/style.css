@@ -76,9 +76,26 @@ img.cardimg {
 	height: auto;
 }
 
+ul {
+	display: inline-block;
+	list-style: none;
+}
+
+img.cardimg {
+	width: 60px;
+	height: auto;
+	margin-right: -70px;
+}
+
 button {
 	background: rgba(15, 15, 15, 0.5);
 	border: none;
 	padding: 15px;
 	border-radius: 4px;
+}
+
+img.profile-pictures {
+	height: 80px;
+	width: auto;
+	border-radius: 8px;
 }
