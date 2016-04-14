@@ -70,3 +70,8 @@ span.got-it {
 .spades {
 	color: darkgrey;
 }
+
+img.cardimg {
+	width: 10%;
+	height: auto;
+}

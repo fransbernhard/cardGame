@@ -8,7 +8,7 @@ class Deck {
 
   function __construct() {
 
-    $this->suit = ["Spades", "Hearts", "Clubs", "Diamonds"];
+    $this->suit = ["spades", "hearts", "clubs", "diamonds"];
     $this->face = ["Two", "Three", "Four", "Five", "Six", "Seven", "Eight",
     "Nine", "Ten", "Jack", "Queen", "King", "Ace"];
 

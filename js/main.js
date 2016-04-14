@@ -36,25 +36,25 @@ content.click(function(){
 
 $("#btn").click(function(){
   $.getJSON("cards.php", function(data){
-  	// console.log(data);
+  	 console.log(data);
 		$('#area').html("");
 		data.forEach(function(key){
 			switch(key.suit){
-				case "Spades":
+				case "spades":
 					console.log(key);
-					$('#area').append('<ul><li class="spades">' + key.face + ' of ' + key.suit + '</li></ul>');
+					$('#area').append('<ul><li class="spades"><img class="cardimg" src="' + key.filePath + '"></img></li></ul>');
 					break;
-				case "Hearts":
+				case "hearts":
 					console.log(key);
-					$('#area').append('<ul><li class="hearts">' + key.face + ' of ' + key.suit + '</li></ul>');
+					$('#area').append('<ul><li class="hearts"><img class="cardimg" src="' + key.filePath + '"></img></li></ul>');
 					break;
-				case "Clubs":
+				case "clubs":
 					console.log(key);
-					$('#area').append('<ul><li class="clubs">' + key.face + ' of ' + key.suit + '</li></ul>');
+					$('#area').append('<ul><li class="clubs"><img class="cardimg" src="' + key.filePath + '"></img></li></ul>');
 					break;
-				case "Diamonds":
+				case "diamonds":
 					console.log(key);
-					$('#area').append('<ul><li class="diamonds">' + key.face + ' of ' + key.suit + '</li></ul>');
+					$('#area').append('<ul><li class="diamonds"><img class="cardimg" src="' + key.filePath + '"></img></li></ul>');
 					break;
 				}
 			}
