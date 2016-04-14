@@ -56,9 +56,13 @@ spl_autoload_register(function ($className) {
 				<span class="got-it" title="OK, I got it. Let´s play....">OK, I got it. Let´s play....</span></p>
 		</header>
 	<section>
-		<p>
-		
-		</p>
+<?php
+
+	$kortlek = new Dealer;
+
+	var_dump($kortlek);
+
+?>
 	</section>
 </div>
 
