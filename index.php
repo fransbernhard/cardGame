@@ -55,10 +55,10 @@ spl_autoload_register(function ($className) {
 				</header>
 	<section>
 		<?php
-			$deck = new Dealer();
+			$deck = new Deck();
 			// var_dump($deck);
 			echo $deck->showDeck();
- 
+
 
 		?>
 	</section>

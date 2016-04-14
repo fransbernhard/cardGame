@@ -1,6 +1,6 @@
 <?php
 
-class Dealer {
+class Deck {
 
   public $suit;
   public $face;
