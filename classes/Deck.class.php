@@ -21,6 +21,7 @@ class Deck {
   }
 
   function showDeck(){
+    shuffle($this->deck);
     echo json_encode($this->deck);
   }
 
