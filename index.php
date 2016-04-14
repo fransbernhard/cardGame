@@ -53,15 +53,9 @@ spl_autoload_register(function ($className) {
 						If you are playing with any of the variants listed below, you may wish to multiply the number of players by 100 instead of 50 to make up for the variation in scoring. In that case, 6 players would play until the winning player reaches 600 points.<br><br>
 						<span class="got-it" title="OK, I got it. Let´s play....">OK, I got it. Let´s play....</span></p>
 				</header>
-	<section>
-		<?php
-			$deck = new Deck();
-			// var_dump($deck);
-			echo $deck->showDeck();
 
-
-		?>
-	</section>
+		<button id="btn">Click me</button>
+		<div id="area"></div>
 	</div>
 
 

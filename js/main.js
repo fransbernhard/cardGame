@@ -32,3 +32,24 @@ rulesHeadline.click(function(){
 content.click(function(){
 	content.hide(600);
 });
+
+// $.ajax({
+//   dataType: "json",
+//   url: 'cards.php',
+//   data: data,
+//   success: function(result){
+//         $("#section").html(result);
+//     }});
+// });
+
+$("#btn").click(function(){
+  $.getJSON("cards.php", function(data){
+  	// console.log(data);
+		data.forEach(function(key){
+			if (key.suit == "Spades"){
+				console.log(key);
+				$('body').append('<ul><li>' + key.face + ' of ' + key.suit + '</li></ul>');
+			}
+		});
+	});
+});
