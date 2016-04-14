@@ -57,25 +57,7 @@ spl_autoload_register(function ($className) {
 		</header>
 	<section>
 		<p>
-			<!-- <?php
-			
-				$h4 = new Heart (4);
-				echo $h4->showCard();
-
-				$s8 = new Spade (8);
-				echo $s8->showCard();
-
-				$d6 = new Diamond (6);
-				echo $d6->showCard();
-
-				$c6 = new Club (9);
-				echo $c6->showCard();
-
-				$deck1 = new Deck();
-				echo $deck1->showDeck();
-				var_dump($deck1);
-
-			?> -->
+		
 		</p>
 	</section>
 </div>
