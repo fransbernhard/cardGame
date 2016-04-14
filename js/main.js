@@ -33,23 +33,31 @@ content.click(function(){
 	content.hide(600);
 });
 
-// $.ajax({
-//   dataType: "json",
-//   url: 'cards.php',
-//   data: data,
-//   success: function(result){
-//         $("#section").html(result);
-//     }});
-// });
 
 $("#btn").click(function(){
   $.getJSON("cards.php", function(data){
   	// console.log(data);
+		$('#area').html("");
 		data.forEach(function(key){
-			if (key.suit == "Spades"){
-				console.log(key);
-				$('body').append('<ul><li>' + key.face + ' of ' + key.suit + '</li></ul>');
+			switch(key.suit){
+				case "Spades":
+					console.log(key);
+					$('#area').append('<ul><li class="spades">' + key.face + ' of ' + key.suit + '</li></ul>');
+					break;
+				case "Hearts":
+					console.log(key);
+					$('#area').append('<ul><li class="hearts">' + key.face + ' of ' + key.suit + '</li></ul>');
+					break;
+				case "Clubs":
+					console.log(key);
+					$('#area').append('<ul><li class="clubs">' + key.face + ' of ' + key.suit + '</li></ul>');
+					break;
+				case "Diamonds":
+					console.log(key);
+					$('#area').append('<ul><li class="diamonds">' + key.face + ' of ' + key.suit + '</li></ul>');
+					break;
+				}
 			}
-		});
+		);
 	});
 });

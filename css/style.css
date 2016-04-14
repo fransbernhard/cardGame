@@ -4,6 +4,10 @@ body {
 	font-family: 'Vollkorn', serif;
 }
 
+ul {
+	list-style: none;
+}
+
 h1, h2, h3, h4, h5 {
 	font-family: 'Unica One', cursive;
 	text-shadow: 2px 2px 2px #333;
@@ -49,4 +53,20 @@ span.got-it {
 	font-size: 1.4rem;
 	font-weight: bold;
 	cursor: pointer;
+}
+
+.diamonds {
+	color: darkred;
+}
+
+.hearts {
+	color: red;
+}
+
+.clubs {
+	color: black;
+}
+
+.spades {
+	color: darkgrey;
 }
