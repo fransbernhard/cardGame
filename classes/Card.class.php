@@ -9,6 +9,9 @@ class Card {
   
   function __construct($face, $suit) {
       
+    $this->face = $face;
+    $this->suit = $suit;
+
     switch($face){
       case "Two":
         $this->point = 2;

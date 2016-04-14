@@ -20,6 +20,10 @@ class Dealer {
 
   }
 
+  function showDeck(){
+    echo json_encode($this->deck);
+  }
+
 
 
 }

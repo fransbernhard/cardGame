@@ -58,9 +58,11 @@ spl_autoload_register(function ($className) {
 	<section>
 <?php
 
-	$kortlek = new Dealer;
+	$deck = new Dealer();
 
-	var_dump($kortlek);
+	// var_dump($deck);
+	echo $deck->showDeck();
+ 
 
 ?>
 	</section>
