@@ -53,47 +53,18 @@ spl_autoload_register(function ($className) {
 						If you are playing with any of the variants listed below, you may wish to multiply the number of players by 100 instead of 50 to make up for the variation in scoring. In that case, 6 players would play until the winning player reaches 600 points.<br><br>
 						<span class="got-it" title="OK, I got it. Let´s play....">OK, I got it. Let´s play....</span></p>
 				</header>
-			<section>
-				<?php
-
-<<<<<<< HEAD
-				The standard way of scoring is to count all the cards remaining in opponents’ hands once a player has played his or her last card. Here is the way to score each card:
-				<br>
-				King, Queen, Jack, Ten all count for 10 points each.
-				<br>
-				Aces count for 1 point each.
-				<br>
-				All numbered cards 2-9 (excluding 8’s) count the same number of points as their rank (a 2 of Clubs counts 2 points, a 6 of Hearts counts 6 points, etc.)
-				<br>
-				Any 8’s remaining in a player’s hand count as 50 points.
-				<br>
-				The game ends when a player reaches 100 points, although this can be adjusted according to the number of players you have and the types of rule variants you are playing with.
-				<br>
-				The more players you have the higher the winning score should be. One way to accomplish this is to multiply the number of players you have by 50, and the first player who gets to that score wins. For example, if you are playing with 6 players, you may want to play to 300.
-				<br>
-				If you are playing with any of the variants listed below, you may wish to multiply the number of players by 100 instead of 50 to make up for the variation in scoring. In that case, 6 players would play until the winning player reaches 600 points.<br><br>
-				<span class="got-it" title="OK, I got it. Let´s play....">OK, I got it. Let´s play....</span></p>
-		</header>
 	<section>
-<?php
-
-	$deck = new Dealer();
-
-	// var_dump($deck);
-	echo $deck->showDeck();
+		<?php
+			$deck = new Dealer();
+			// var_dump($deck);
+			echo $deck->showDeck();
  
 
-?>
+		?>
 	</section>
-</div>
-=======
-					$deck= new Dealer;
-					var_dump($deck);
+	</div>
 
-				?>
-			</section>
-		</div>
->>>>>>> 59cb6f762242d6167907b91b164ba8e4d9714e1f
+
 
 		<!--javascript libraries -->
 		<script src="js/jquery.js"></script>
