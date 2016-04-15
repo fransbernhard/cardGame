@@ -18,8 +18,13 @@ spl_autoload_register(function ($className) {
 			<header id="top">
 				<h1>The Best CardGame Ever !!</h1>
 				<h3 class="authors">Click here to see the authors.</h3>
-				<p class="made-by">Mimi, Rickard, BamBam, Mikael</p>
-				<h3 class="rules">Don´t know how to play the game? Click here to read the rules.</h3>
+				<p class="made-by">
+					<img class="profile-pictures" src="imgs/mimi.png">
+					<img class="profile-pictures" src="imgs/rick.png">
+					<img class="profile-pictures" src="imgs/me.jpg">
+					<img class="profile-pictures" src="imgs/bambam.jpg">
+				</p>
+					<h3 class="rules">Don´t know how to play the game? Click here to read the rules.</h3>
 
 						<p class="rules-content"  title="Click anywhere to hide the rules">
 							<img class="rules-picture" src="imgs/eight.png">
