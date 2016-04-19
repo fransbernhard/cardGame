@@ -1,6 +1,5 @@
 <?php
-
-session_start();
+// session_start();
 
 spl_autoload_register(function ($className) {
 	include 'classes/' . $className . '.class.php';
@@ -69,10 +68,11 @@ spl_autoload_register(function ($className) {
 		<?php
 
 		$table = new Table;
+		// $table = $_SESSION["table"];
 		$table -> makePlayers();
 		$player = $table-> getPlayer(1);
 		$player -> takeCardFromDeck();
-		echo "after takeCardFromDeck";
+		// echo "after takeCardFromDeck";
 		var_dump($player);
 
 		?>

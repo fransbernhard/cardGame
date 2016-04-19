@@ -7,6 +7,7 @@ session_start();
   });
 
   $deck = new Deck();
+
   $_SESSION["deck"] = $deck;
-  echo $deck->showDeck();
+  $deck->showDeck();
 ?>

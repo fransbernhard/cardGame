@@ -16,9 +16,10 @@ class Player {
     }
 
     public function takeCardFromDeck() {
-      $temp = $_SESSION["deck"];
-      var_dump($temp);
-      array_push($this->hand,$_SESSION["deck"]->popCard());
+      // echo "takeCardFromDeck ";
+      $deck = $_SESSION["deck"];
+      // var_dump($deck);
+      array_push($this->hand,$deck->popCard());
     }
 
 
