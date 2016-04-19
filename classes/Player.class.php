@@ -4,8 +4,8 @@ class Player {
    public $hand = [];
    public $name;
 
-   function __construct() {
-
+   function __construct($name) {
+      $this->name = $name;
    }
 
     public function layDownCard(){
