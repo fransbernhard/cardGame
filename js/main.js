@@ -61,3 +61,13 @@ $("#btn").click(function(){
 		);
 	});
 });
+
+$('#btn2').click(function(){
+			$.ajax({
+					url: "takeCard.php",
+					success: function (response) {//response is value returned from php (for your example it's "bye bye"
+				   alert(response);
+			  }
+			});
+
+    });

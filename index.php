@@ -62,18 +62,20 @@ spl_autoload_register(function ($className) {
 				</header>
 
 		<button id="btn">Click me</button>
+		<button id="btn2">Take new card</button>
 		<div id="area"></div>
 	</div>
 	<section>
 		<?php
 
 		$table = new Table;
-		// $table = $_SESSION["table"];
 		$table -> makePlayers();
-		$player = $table-> getPlayer(1);
-		$player -> takeCardFromDeck();
+		// $player = $table-> getPlayer(1);
+		// $player -> takeCardFromDeck();
+		// $player -> layDownCard();
 		// echo "after takeCardFromDeck";
-		var_dump($player);
+		// var_dump($player);
+		$_SESSION["table"] = $table;
 
 		?>
 	</section>
