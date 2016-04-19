@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 spl_autoload_register(function ($className) {
 	include 'classes/' . $className . '.class.php';
 });
@@ -62,7 +65,18 @@ spl_autoload_register(function ($className) {
 		<button id="btn">Click me</button>
 		<div id="area"></div>
 	</div>
+	<section>
+		<?php
 
+		$table = new Table;
+		$table -> makePlayers();
+		$player = $table-> getPlayer(1);
+		$player -> takeCardFromDeck();
+		echo "after takeCardFromDeck";
+		var_dump($player);
+
+		?>
+	</section>
 
 
 		<!--javascript libraries -->

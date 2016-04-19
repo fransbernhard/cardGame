@@ -1,8 +1,10 @@
 <?php
+session_start();
 
 class Player {
    public $hand = [];
    public $name;
+
 
    function __construct($name) {
       $this->name = $name;
@@ -11,7 +13,15 @@ class Player {
     public function layDownCard(){
         $this->hand = [1, 2, 3, 4, 5, 6];    // Hard coded numbers represent cards. Will get from deal function
         array_shift($this->hand);            // Shift the first "card" out
-  }
+    }
+
+    public function takeCardFromDeck() {
+      $temp = $_SESSION["deck"];
+      var_dump($temp);
+      array_push($this->hand,$_SESSION["deck"]->popCard());
+    }
+
+
 
     public function showHand(){
         for($i=0; $i<count($this->hand); $i++){  // loops through to get the remaining "cards"

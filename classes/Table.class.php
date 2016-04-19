@@ -16,9 +16,22 @@ class Table {
         shuffle($this->players);      // Shuffles the array of players
         $rand_players = array_rand(0, 4);
         foreach ($this->players as $player ) {
-            echo $player->toString() . "<br>";
+            // echo $player->toString() . "<br>";
         }
     }
+
+    public function dealCards(){
+        for($i = 0; $i <count($this->players->hand); $i++){
+            foreach ($players as $player) {
+                
+            }
+        }
+    }
+
+    public function getPlayer($indexNumber){
+       return $this -> players[$indexNumber];
+    }
 }
+
 
 ?>

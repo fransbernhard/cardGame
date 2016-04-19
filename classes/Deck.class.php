@@ -20,6 +20,10 @@ class Deck {
 
   }
 
+  function popCard(){
+    return array_pop($this->deck);
+  }
+
   function showDeck(){
     shuffle($this->deck);
     echo json_encode($this->deck);
