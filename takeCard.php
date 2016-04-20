@@ -6,23 +6,19 @@
 
   session_start();
 
-
-
-
-
   $table = $_SESSION["table"];//when grabbing the session u need to change the pattern how u type it.
-  // error_log(json_encode($table));
-  var_dump($table);
-  
-  
-  $player = $table->getPlayer(2);
-  echo "hej";
-  $player->takeCardFromDeck();
-
+ 
+  $player1 = $table->getPlayer(0); //selects the first player in the array
+  // $player1->showPlayer();
+  $player1->takeCardFromDeck(); // takes a card from the deck and puts it in it´s own hand
+  // var_dump($player1); 
+  $player1->showHand();
+  // $deck->showDeck();
+  // var_dump($deck);
   $deck = $_SESSION["deck"];
 
-  $deck->showDeck();
+  // $deck->showDeck();
 
-  var_dump($deck);
+  // var_dump($deck);
 
 ?>

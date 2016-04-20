@@ -65,9 +65,10 @@ $("#btn").click(function(){
 $('#btn2').click(function(){
 			$.ajax({
 					url: "takeCard.php",
-					success: function (response) {//response is value returned from php (for your example it's "bye bye"
-				   alert(response);
+					success: function (response) { //response is value returned from php (for your example it's "bye bye"
+				   $('section').empty().append(response); //appends the respons to section and clears it on every click (Mikael)
 			  }
 			});
 
     });
+
