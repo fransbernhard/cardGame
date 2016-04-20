@@ -8,6 +8,8 @@ session_start();
 
   $deck = new Deck();
 
+   $table = new Table;
+
   $_SESSION["deck"] = $deck;
   $deck->showDeck();
 ?>

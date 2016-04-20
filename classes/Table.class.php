@@ -3,36 +3,44 @@ session_start();
 
 class Table {
     public $players = [];
+    private $maxPlayers = 6; 
+
     // private $deck = new Deck;
+    
+    public function registerPlayer($name) {  
 
-    public $numberofplayers = 4;
-
-    public function makePlayers() {
-       for($i = 0; $i < $this->numberofplayers; $i++) {
-           array_push($this->players, new Player($i));
-       }
-    }
-
-    public function showPlayer() {    // Takes a random set of payers out of a shuffled group of players
-        // shuffle($this->players);      // Shuffles the array of players
-        for($i=0; $i<$this->players; $i++) {
-            echo $this->players->toString() . "<br>";
-            // echo $this->players[$i] . "<br>";
+        $p = new Player($name);
+        if(count($this->players) <= $this->maxPlayers){
+           $id = array_push($this->players, $p) - 1; 
+        }else{
+            return false;
         }
+        
+
+        return $id;
+        
     }
 
-
-
-    // public function dealOut($players){
-    //     for($i = 0; $i<=$this->numberOfCards; $i++){
-    //     foreach ($players as $player) {
-    //         array_push($player->hand,$deck->popCard());
+    // public function showPlayer() {    // Takes a random set of payers out of a shuffled group of players
+    //     // shuffle($this->players);      // Shuffles the array of players
+    //     for($i=0; $i<$this->players; $i++) {
+    //         echo $this->players->toString() . "<br>";
+    //         // echo $this->players[$i] . "<br>";
     //     }
     // }
 
 
-    //     return $this->deck;
-    // }
+
+    public function dealOut($players){
+        for($i = 0; $i<=$this->numberOfCards; $i++){
+        foreach ($players as $player) {
+            array_push($player->hand,$deck->popCard());
+        }
+    }
+
+
+        return $this->deck;
+    }
 
     public function dealCards(){
         for($i = 0; $i <count($this->hand); $i++){

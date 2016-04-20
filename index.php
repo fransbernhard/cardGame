@@ -60,7 +60,7 @@ spl_autoload_register(function ($className) {
 						If you are playing with any of the variants listed below, you may wish to multiply the number of players by 100 instead of 50 to make up for the variation in scoring. In that case, 6 players would play until the winning player reaches 600 points.<br><br>
 						<span class="got-it" title="OK, I got it. Let´s play....">OK, I got it. Let´s play....</span></p>
 				</header>
-<!-- 		<button id="btn">Make a new deck (shuffled)</button> -->
+		<button id="btn">Make a new deck (shuffled)</button>
 		<button id="btn2">Take new card</button>
 		<div id="area">
 
@@ -71,16 +71,16 @@ spl_autoload_register(function ($className) {
 
 		//---------------------------------serializing
 		$tableserialized = serialize($table);
-		file_put_contents("test.txt", $tableserialized);
-		echo $tableserialized;
+		file_put_contents("game.dat", $tableserialized);
+		// echo $tableserialized;
 	
-		$content = file_get_contents("test.txt");
-		$unserialized = unserialize($content);
-		$unserialized-> makePlayers();
+		
 
 		var_dump($unserialized);
 
-		$_SESSION["table"] = $unserialized;
+
+
+		// $_SESSION["table"] = $unserialized;
 
 		//---------------------------------serializing
 
