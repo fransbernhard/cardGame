@@ -3,6 +3,7 @@ session_start();
 
 class Table {
     public $players = [];
+    // private $deck = new Deck;
 
     public $numberofplayers = 4;
 
@@ -21,18 +22,32 @@ class Table {
         }
     }
 
-    public function dealCards(){
-        for($i = 0; $i <count($this->players->hand); $i++){
-            foreach ($players as $player) {
+    // public function dealCards(){
+    //     for($i = 0; $i <count($this->players->hand); $i++){
+    //         foreach ($players as $player) {
                 
-            }
-        }
-    }
+    //         }
+    //     }
+    // }
+    // public function dealOut($players){
+    //     for($i = 0; $i<=$this->numberOfCards; $i++){
+    //     foreach ($players as $player) {
+    //         array_push($player->hand,$deck->popCard());
+    //     }
+    // }
+
+
+    //     return $this->deck;
+    // }
 
     public function getPlayer($indexNumber){
        return $this -> players[$indexNumber];
     }
+
+
+
 }
+
 
 
 ?>

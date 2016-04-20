@@ -6,6 +6,7 @@ class Deck {
   public $suit;
   public $face;
   public $deck = [];
+  public $numberOfCards = 5;
 
   function __construct() {
 
@@ -20,6 +21,7 @@ class Deck {
     }
 
   }
+
 
   function popCard(){
     return array_pop($this->deck);
