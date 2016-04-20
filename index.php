@@ -63,7 +63,9 @@ spl_autoload_register(function ($className) {
 <!-- 		<button id="btn">Make a new deck (shuffled)</button> -->
 		<button id="btn2">Take new card</button>
 		<div id="area">
+
 		<?php
+
 
 		$table = new Table;
 

@@ -13,22 +13,16 @@ class Table {
        }
     }
 
-
     public function showPlayer() {    // Takes a random set of payers out of a shuffled group of players
-        shuffle($this->players);      // Shuffles the array of players
-        $rand_players = array_rand(0, 4);
-        foreach ($this->players as $player ) {
-            // echo $player->toString() . "<br>";
+        // shuffle($this->players);      // Shuffles the array of players
+        for($i=0; $i<$this->players; $i++) {
+            echo $this->players->toString() . "<br>";
+            // echo $this->players[$i] . "<br>";
         }
     }
 
-    // public function dealCards(){
-    //     for($i = 0; $i <count($this->players->hand); $i++){
-    //         foreach ($players as $player) {
-                
-    //         }
-    //     }
-    // }
+
+
     // public function dealOut($players){
     //     for($i = 0; $i<=$this->numberOfCards; $i++){
     //     foreach ($players as $player) {
@@ -40,6 +34,14 @@ class Table {
     //     return $this->deck;
     // }
 
+    public function dealCards(){
+        for($i = 0; $i <count($this->hand); $i++){
+            foreach ($this->players as $player) {
+                array_push($this->hand,$deck->popCard());
+                print_r($this->hand[$i]);
+            }
+        }
+    }
     public function getPlayer($indexNumber){
        return $this -> players[$indexNumber];
     }
