@@ -72,3 +72,15 @@ $('#btn2').click(function(){
 
     });
 
+
+$('#btnregplayer').click(function(){
+	var p = $('#playername').val();
+	console.log('working?', p);
+	$.ajax({
+		url: "reg.player.php?name=" + p,
+		success: function (response) { 
+			$('section').append(response);
+			console.log("what up?", response);
+		}
+	});
+});

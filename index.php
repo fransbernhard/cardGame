@@ -62,6 +62,10 @@ spl_autoload_register(function ($className) {
 				</header>
 		<button id="btn">Make a new deck (shuffled)</button>
 		<button id="btn2">Take new card</button>
+		<form method="POST">
+			Type our name: <input id="playername" type="text" name="name"><br>
+			<input id="btnregplayer" type="button" value="Submit">
+		</form>
 		<div id="area">
 
 

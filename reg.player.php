@@ -6,7 +6,7 @@ spl_autoload_register(function ($className) {
 
 session_start();
 
-$player = $_GET["hej"];
+$player = $_GET["name"];
 
 $str = file_get_contents("game.dat");
 $table = unserialize($str);
