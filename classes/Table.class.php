@@ -9,7 +9,7 @@ class Table {
 
     public $players = [];
     private $maxPlayers = 6; 
-
+    public $numberOfCards = 5;
     private $deck;
 
     public function __construct(){
@@ -29,8 +29,8 @@ class Table {
         
   public function dealOut($players){
     for($i = 0; $i<=$this->numberOfCards; $i++){
-      foreach ($players as $player) {
-        array_push($player->hand,$deck->popCard());
+      foreach ($this ->players as $player) {
+        array_push($this->player->hand,$this->deck->popCard());
       }
     }
     return $this->deck;
