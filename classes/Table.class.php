@@ -6,6 +6,7 @@ spl_autoload_register(function ($className) {
 });
 
 class Table {
+
     public $players = [];
     private $maxPlayers = 6; 
 
@@ -23,15 +24,39 @@ class Table {
         }else{
             return false;
         }
-        
-
         return $id;
+    }
         
+  public function dealOut($players){
+    for($i = 0; $i<=$this->numberOfCards; $i++){
+      foreach ($players as $player) {
+        array_push($player->hand,$deck->popCard());
+      }
+    }
+    return $this->deck;
+  }
+
+  public function dealCards(){
+    for($i = 0; $i <count($this->hand); $i++){
+      foreach ($this->players as $player) {
+        array_push($this->hand,$deck->popCard());
+        print_r($this->hand[$i]);
+      }
+    }
+  }
+
+    public function getPlayer($indexNumber){
+        return $this -> players[$indexNumber];
     }
 
     public function showDeck(){
         $this->deck->deckShuffle();
     }
+}
+
+
+
+
 
 
 
@@ -42,35 +67,6 @@ class Table {
     //         // echo $this->players[$i] . "<br>";
     //     }
     // }
-
-
-
-    public function dealOut($players){
-        for($i = 0; $i<=$this->numberOfCards; $i++){
-        foreach ($players as $player) {
-            array_push($player->hand,$deck->popCard());
-        }
-    }
-
-
-        return $this->deck;
-    }
-
-    public function dealCards(){
-        for($i = 0; $i <count($this->hand); $i++){
-            foreach ($this->players as $player) {
-                array_push($this->hand,$deck->popCard());
-                print_r($this->hand[$i]);
-            }
-        }
-    }
-    public function getPlayer($indexNumber){
-       return $this -> players[$indexNumber];
-    }
-
-
-
-}
 
 
 
