@@ -19,7 +19,7 @@ class Table {
     public function registerPlayer($name) {  
 
         $p = new Player($name);
-        if(count($this->players) <= $this->maxPlayers){
+        if(count($this->players) < $this->maxPlayers){
            $id = array_push($this->players, $p) - 1; 
         }else{
             return false;

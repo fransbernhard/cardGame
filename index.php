@@ -64,34 +64,7 @@ spl_autoload_register(function ($className) {
 		<button id="btn2">Take new card</button>
 		<div id="area">
 
-		<?php
 
-
-		$table = new Table;
-
-		//---------------------------------serializing
-		$tableserialized = serialize($table);
-		file_put_contents("game.dat", $tableserialized);
-		// echo $tableserialized;
-
-		$str = file_get_contents("game.dat");
-		$table = unserialize($str);
-
-
-	
-		var_dump($table);
-		
-
-		// var_dump($unserialized);
-
-
-
-		// $_SESSION["table"] = $unserialized;
-
-		//---------------------------------serializing
-
-		
-		?>
 		</div>
 	<section><br><br>
 

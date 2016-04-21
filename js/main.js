@@ -36,7 +36,7 @@ content.click(function(){
 
 $("#btn").click(function(){
   $.getJSON("cards.php", function(data){
-  	 console.log(data);
+  	 // console.log(data);
 		$('#area').html("");
 		data.forEach(function(key){
 			switch(key.suit){

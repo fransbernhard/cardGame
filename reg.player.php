@@ -6,18 +6,29 @@ spl_autoload_register(function ($className) {
 
 session_start();
 
-$player = $_GET["name"];
+$player = $_GET["hej"];
 
 $str = file_get_contents("game.dat");
 $table = unserialize($str);
+
+// var_dump($table);
 
 
 
 $id = $table-> registerPlayer($player);
 
-$table =  $_SESSION["table"];
+if ($id == NULL) {
+  echo "fuck off";
+}
 
-var_dump($table);
+$_SESSION["table"] = $table;
+
+// $table =  $_SESSION["table"];
+
+// var_dump($table);
+echo json_encode($table -> players);
+
+// $table->getPlayer();
 
 
 $tableserialized = serialize($table);
