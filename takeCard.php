@@ -6,6 +6,9 @@
 
   session_start();
 
+  $str = file_get_contents("game.dat");
+  $table = unserialize($str);
+
   $table = $_SESSION["table"];//when grabbing the session u need to change the pattern how u type it.
  
   $player1 = $table->getPlayer(0); //selects the first player in the array

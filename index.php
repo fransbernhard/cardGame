@@ -73,10 +73,16 @@ spl_autoload_register(function ($className) {
 		$tableserialized = serialize($table);
 		file_put_contents("game.dat", $tableserialized);
 		// echo $tableserialized;
+
+		$str = file_get_contents("game.dat");
+		$table = unserialize($str);
+
+
 	
+		var_dump($table);
 		
 
-		var_dump($unserialized);
+		// var_dump($unserialized);
 
 
 

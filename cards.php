@@ -6,10 +6,13 @@ session_start();
   	include 'classes/' . $className . '.class.php';
   });
 
-  $deck = new Deck();
 
-   $table = new Table;
+  $str = file_get_contents("game.dat");
+$table = unserialize($str);
+
+
+
 
   $_SESSION["deck"] = $deck;
-  $deck->showDeck();
+  $table -> showDeck();
 ?>

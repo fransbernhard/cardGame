@@ -27,7 +27,7 @@ class Deck {
     return array_pop($this->deck);
   }
 
-  function showDeck(){
+  function deckShuffle(){
     shuffle($this->deck);
     echo json_encode($this->deck);
   }

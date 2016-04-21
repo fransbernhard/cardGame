@@ -1,11 +1,19 @@
 <?php
 session_start();
 
+spl_autoload_register(function ($className) {
+    include 'classes/' . $className . '.class.php';
+});
+
 class Table {
     public $players = [];
     private $maxPlayers = 6; 
 
-    // private $deck = new Deck;
+    private $deck;
+
+    public function __construct(){
+        $this->deck = new Deck;
+    }
     
     public function registerPlayer($name) {  
 
@@ -20,6 +28,12 @@ class Table {
         return $id;
         
     }
+
+    public function showDeck(){
+        $this->deck->deckShuffle();
+    }
+
+
 
     // public function showPlayer() {    // Takes a random set of payers out of a shuffled group of players
     //     // shuffle($this->players);      // Shuffles the array of players
