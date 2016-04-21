@@ -106,3 +106,12 @@ img.profile-pictures {
 	height: 400px;
 	background-color: green;
 }
+
+input#playername {
+	color: black;
+}
+
+input#btnregplayer {
+	color: black;
+}
+}
