@@ -19,9 +19,7 @@ class Deck {
         $this->deck[] = new Card($face, $suit);
       }
     }
-
   }
-
 
   function popCard(){
     return array_pop($this->deck);
@@ -31,7 +29,4 @@ class Deck {
     shuffle($this->deck);
     echo json_encode($this->deck);
   }
-
-
-
 }

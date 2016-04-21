@@ -23,13 +23,10 @@ class Player {
   }
 
   public function showHand(){
-      for($i=0; $i<count($this->hand); $i++){  // loops through to get the remaining "cards"
-        print_r($this->hand[$i]);                // echos out what remains in the hand array
-          }
+    for($i=0; $i<count($this->hand); $i++){  // loops through to get the remaining "cards"
+      print_r($this->hand[$i]);                // echos out what remains in the hand array
+    }
   }
-
 }
 
 ?>
-
-
