@@ -35,9 +35,9 @@ content.click(function(){
 
 
 $("#btn").click(function(){
+console.log("Now creating new table, new deck and a new game.....");
   $.getJSON("cards.php", function(data){
-  	 // console.log(data);
-		$('#area').html("");
+  	$('#area').html("");
 		data.forEach(function(key){
 			switch(key.suit){
 				case "spades":
@@ -63,6 +63,7 @@ $("#btn").click(function(){
 });
 
 $('#btn2').click(function(){
+	console.log("Taking a card from the deck........");
 			$.ajax({
 					url: "takeCard.php",
 					success: function (response) { //response is value returned from php (for your example it's "bye bye"
@@ -73,17 +74,18 @@ $('#btn2').click(function(){
     });
 
 $('#btn3').click(function(){
+	console.log("Dealing out 5 cards to each player........");
 			$.ajax({
 					url: "dealOut.php",
 					success: function (response) { //response is value returned from php (for your example it's "bye bye"
 				   $('section').empty().append(response); //appends the respons to section and clears it on every click (Mikael)
 			  }
 			});
-
     });
 
 
 $('#btnregplayer').click(function(){
+	console.log("Registering a player with an input field........");
 	var p = $('#playername').val();
 	console.log('working?', p);
 	$.ajax({
@@ -93,6 +95,47 @@ $('#btnregplayer').click(function(){
 			console.log("what up?", response);
 		}
 	});
+});
 
+
+
+// $( "#btn" ).click(function() {
+//   prompt( "Handler for .click() called." );
+// });
+
+
+$( "#btn" ).click(function() {
+	console.log("Adding a new player with a prompt........");
+  var greeting = "What is your name?"; 
+  
+		function insertPlayerName() {
+			var p = $('#submit').val();
+			console.log("after #submit");
+			return prompt(greeting, p);
+			// console.log('working?', p);
+
+			}
+
+		function addingplayerNameToGame() {
+     var p = insertPlayerName();
+     alert("Hello "+ p + "and welcome to the game. Press 'OK' to continue");
+
+     $.ajax({
+				url: "reg.player.php?name=" + p,
+				success: function (response) { 
+				$('section').append(response);
+				// console.log("what up?", response);
+				// return prompt(greeting, p);
+			}
+			
+		});
+	 	}
+   	
+		addingplayerNameToGame();
+
+		
 
 });
+
+
+
