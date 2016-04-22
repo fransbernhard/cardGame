@@ -6,7 +6,7 @@ spl_autoload_register(function ($className) {
 
 session_start();
 
-$player = $_GET["name"];
+$playerName = $_GET["name"];
 
 $str = file_get_contents("game.dat");
 $table = unserialize($str);
@@ -15,7 +15,7 @@ $table = unserialize($str);
 
 
 
-$id = $table-> registerPlayer($player);
+$id = $table-> registerPlayer($playerName);
 
 if ($id == NULL) {
   echo "fuck off";

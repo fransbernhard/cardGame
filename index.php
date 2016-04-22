@@ -60,7 +60,7 @@ spl_autoload_register(function ($className) {
 						If you are playing with any of the variants listed below, you may wish to multiply the number of players by 100 instead of 50 to make up for the variation in scoring. In that case, 6 players would play until the winning player reaches 600 points.<br><br>
 						<span class="got-it" title="OK, I got it. Let´s play....">OK, I got it. Let´s play....</span></p>
 				</header>
-		<button id="btn">Make a new deck (shuffled)</button>
+		<button id="btn">Start new game</button>
 		<button id="btn2">Take new card</button>
 		<form method="POST">
 			Type our name: <input id="playername" type="text" name="name"><br>

@@ -14,6 +14,10 @@ class Table {
 
     public function __construct(){
         $this->deck = new Deck;
+        array_push($this->players, new Player("cpu1"));
+        array_push($this->players, new Player("cpu2"));
+        array_push($this->players, new Player("cpu3"));
+
     }
     
     public function registerPlayer($name) {  
@@ -21,10 +25,11 @@ class Table {
         $p = new Player($name);
         if(count($this->players) < $this->maxPlayers){
            $id = array_push($this->players, $p) - 1; 
+           return $id;
         }else{
             return false;
         }
-        return $id;
+        
     }
         
   public function dealOut($players){
@@ -49,8 +54,9 @@ class Table {
         return $this -> players[$indexNumber];
     }
 
-    public function showDeck(){
-        $this->deck->deckShuffle();
+
+    public function getDeck(){
+        return $this->deck; 
     }
 }
 

@@ -10,6 +10,7 @@ class Deck {
 
   function __construct() {
 
+
     $this->suit = ["spades", "hearts", "clubs", "diamonds"];
     $this->face = ["Two", "Three", "Four", "Five", "Six", "Seven", "Eight",
     "Nine", "Ten", "Jack", "Queen", "King", "Ace"];
@@ -19,14 +20,13 @@ class Deck {
         $this->deck[] = new Card($face, $suit);
       }
     }
+      shuffle($this->deck);
+
   }
 
   function popCard(){
     return array_pop($this->deck);
   }
 
-  function deckShuffle(){
-    shuffle($this->deck);
-    echo json_encode($this->deck);
-  }
+
 }

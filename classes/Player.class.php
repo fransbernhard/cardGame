@@ -1,10 +1,17 @@
 <?php
 session_start();
 
+
+
 class Player {
+  //  $tableserialized = serialize($table);
+  // file_put_contents("game.dat", $tableserialized);
+
+
 
   public $hand = [];
   public $name;
+  // public $deck = $table->deck;
 
 
   function __construct($name) {
@@ -16,10 +23,12 @@ class Player {
     array_shift($this->hand);            // Shift the first "card" out
   }
 
-  public function takeCardFromDeck() {
-    $deck = $_SESSION["deck"];
+  public function takeCardFromDeck($deck) {
+  //         $str = file_get_contents("game.dat");
+  // $table = unserialize($str);
     array_push($this->hand,$deck->popCard());
     // echo $this->hand[$i];
+ 
   }
 
   public function showHand(){
@@ -28,5 +37,7 @@ class Player {
     }
   }
 }
+
+
 
 ?>
