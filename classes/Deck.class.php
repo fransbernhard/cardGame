@@ -1,32 +1,38 @@
 <?php
-session_start();
 
-class Deck {
+  session_start();
 
-  public $suit;
-  public $face;
-  public $deck = [];
-  public $numberOfCards = 5;
+  class Deck {
 
-  function __construct() {
+    public $suit;
+    public $face;
+    public $deck = [];
+    public $numberOfCards = 5;
+    public $discardPile = [];
 
+    function __construct() {
+      $this->suit = ["spades", "hearts", "clubs", "diamonds"];
+      $this->face = ["Two", "Three", "Four", "Five", "Six", "Seven", "Eight",
+      "Nine", "Ten", "Jack", "Queen", "King", "Ace"];
 
-    $this->suit = ["spades", "hearts", "clubs", "diamonds"];
-    $this->face = ["Two", "Three", "Four", "Five", "Six", "Seven", "Eight",
-    "Nine", "Ten", "Jack", "Queen", "King", "Ace"];
-
-    foreach ($this->suit as $suit) {
-      foreach ($this->face as $face) {
-        $this->deck[] = new Card($face, $suit);
+      foreach ($this->suit as $suit) {
+        foreach ($this->face as $face) {
+          $this->deck[] = new Card($face, $suit);
+        }
       }
-    }
       shuffle($this->deck);
+    }
 
+    function popCard(){
+      if(count($this->deck) == 0){
+        $topCard = array_shift($this->discardPile);
+        $this->deck = $this->discardPile;
+        $this->discardPile = [];
+        $this->discardPile[0] = $topCard;
+        shuffle($this->deck);
+      }
+      return array_pop($this->deck);
+    }
   }
 
-  function popCard(){
-    return array_pop($this->deck);
-  }
-
-
-}
+?>

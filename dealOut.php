@@ -1,15 +1,17 @@
 <?php
- 
-spl_autoload_register(function ($className) {
-  include 'classes/' . $className . '.class.php';
-});
 
-session_start();
+  spl_autoload_register(function ($className) {
+    include 'classes/' . $className . '.class.php';
+  });
 
-$str = file_get_contents("game.dat");
-$table = unserialize($str);
+  session_start();
 
-$table->dealOut();
+  $str = file_get_contents("game.dat");
+  $table = unserialize($str);
 
-$tableserialized = serialize($table);
-file_put_contents("game.dat", $tableserialized);
+  $table->dealOut();
+
+  $tableserialized = serialize($table);
+  file_put_contents("game.dat", $tableserialized);
+
+?>
