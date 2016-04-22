@@ -33,7 +33,7 @@ class Table {
     }
         
   public function dealOut(){
-    for($i = 0; $i<=$this->numberOfCards; $i++){
+    for($i = 0; $i<$this->numberOfCards; $i++){
       foreach ($this ->players as $player) {
         array_push($player->hand,$this->deck->popCard());
       }
