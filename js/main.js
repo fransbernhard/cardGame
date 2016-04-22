@@ -72,6 +72,16 @@ $('#btn2').click(function(){
 
     });
 
+$('#btn3').click(function(){
+			$.ajax({
+					url: "dealOut.php",
+					success: function (response) { //response is value returned from php (for your example it's "bye bye"
+				   $('section').empty().append(response); //appends the respons to section and clears it on every click (Mikael)
+			  }
+			});
+
+    });
+
 
 $('#btnregplayer').click(function(){
 	var p = $('#playername').val();
@@ -83,4 +93,6 @@ $('#btnregplayer').click(function(){
 			console.log("what up?", response);
 		}
 	});
+
+
 });

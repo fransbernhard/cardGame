@@ -32,23 +32,23 @@ class Table {
         
     }
         
-  public function dealOut($players){
+  public function dealOut(){
     for($i = 0; $i<=$this->numberOfCards; $i++){
       foreach ($this ->players as $player) {
-        array_push($this->player->hand,$this->deck->popCard());
+        array_push($player->hand,$this->deck->popCard());
       }
     }
-    return $this->deck;
+    echo json_encode($this);
   }
 
-  public function dealCards(){
-    for($i = 0; $i <count($this->hand); $i++){
-      foreach ($this->players as $player) {
-        array_push($this->hand,$deck->popCard());
-        print_r($this->hand[$i]);
-      }
-    }
-  }
+  // public function dealCards(){
+  //   for($i = 0; $i <count($this->hand); $i++){
+  //     foreach ($this->players as $player) {
+  //       array_push($this->hand,$deck->popCard());
+  //       print_r($this->hand[$i]);
+  //     }
+  //   }
+  // }
 
     public function getPlayer($indexNumber){
         return $this -> players[$indexNumber];
