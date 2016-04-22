@@ -61,9 +61,9 @@ spl_autoload_register(function ($className) {
 						<span class="got-it" title="OK, I got it. Let´s play....">OK, I got it. Let´s play....</span></p>
 				</header>
 		<button id="btn">Start new game</button>
-		<button id="btn2">Take new card</button>
 		<button id="btn3">Deal Out</button>
-
+		<button id="btn2">Take new card</button>
+		
 		<div id="area">
 		</div>
 	<section><br><br>

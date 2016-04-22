@@ -62,6 +62,14 @@ console.log("Now creating new table, new deck and a new game.....");
 	});
 });
 
+// hides the button "start game" on click to prevent reloading page by mistake
+
+$("#btn").click(function(){
+	var button = $("#btn");
+	button.hide();
+});
+
+
 $('#btn2').click(function(){
 	console.log("Taking a card from the deck........");
 			$.ajax({
@@ -118,7 +126,7 @@ $( "#btn" ).click(function() {
 
 		function addingplayerNameToGame() {
      var p = insertPlayerName();
-     alert("Hello "+ p + "and welcome to the game. Press 'OK' to continue");
+     alert("Hello " + p + " and welcome to this FANTASTIC game!!!! Press 'OK' to continue.");
 
      $.ajax({
 				url: "reg.player.php?name=" + p,
