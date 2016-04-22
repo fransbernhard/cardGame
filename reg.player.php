@@ -11,28 +11,19 @@ $playerName = $_GET["name"];
 $str = file_get_contents("game.dat");
 $table = unserialize($str);
 
-// var_dump($table);
+$playerId = $table-> registerPlayer($playerName);
+$_SESSION["id"] = $playerId;
+
+// if ($id == NULL) {
+//   echo "Inte välkommen";
+// }else {
+//   echo "välkommen ";
+// }
 
 
-
-$id = $table-> registerPlayer($playerName);
-
-if ($id == NULL) {
-  echo "fuck off";
-}
-
-$_SESSION["table"] = $table;
-
-// $table =  $_SESSION["table"];
-
-// var_dump($table);
 echo json_encode($table -> players);
-
-// $table->getPlayer();
 
 
 $tableserialized = serialize($table);
 file_put_contents("game.dat", $tableserialized);
-
-// var_dump($table);
 
