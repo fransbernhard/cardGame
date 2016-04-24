@@ -14,6 +14,7 @@ spl_autoload_register(function ($className) {
 		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
 		<link href='https://fonts.googleapis.com/css?family=Unica+One' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Vollkorn:400,400italic' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
 	</head>
 	<body>
 		<div class="wrapper">
@@ -60,15 +61,21 @@ spl_autoload_register(function ($className) {
 						If you are playing with any of the variants listed below, you may wish to multiply the number of players by 100 instead of 50 to make up for the variation in scoring. In that case, 6 players would play until the winning player reaches 600 points.<br><br>
 						<span class="got-it" title="OK, I got it. Let´s play....">OK, I got it. Let´s play....</span></p>
 				</header>
-		<button id="btn">Start new game</button>
-		<button id="btn3">Deal Out</button>
-		<button id="btn2">Take new card</button>
 		
-		<div id="area">
+		<button id="btn-deal-cards">Deal Out</button>
+		
+		<div class="greentable">
+			<div id="area">
+				<div class="welcome"></div>
+				<button id="btn-start-game">START NEW GAME</button>
+				<button id="btntakecard"></button>
+				<section><br><br>
+				</section>
+			</div>
 		</div>
-	<section><br><br>
 
-	</section>
+		<button id="btn-reset">Reset the game and start over</button>
+			
 </div>
 
 

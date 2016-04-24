@@ -22,19 +22,13 @@ rulesHeadline.click(function(){
 	authors.hide();
 });
 
-//prints out the rules on click
-// var printtherules = $('span.print');
-// printtherules.click(function(){
-// 	print();
-// });
-
 //makes the content dissapear on click
 content.click(function(){
 	content.hide(600);
 });
 
 
-$("#btn").click(function(){
+$("#btn-start-game").click(function(){
 console.log("Now creating new table, new deck and a new game.....");
   $.getJSON("cards.php", function(data){
   	$('#area').html("");
@@ -64,86 +58,84 @@ console.log("Now creating new table, new deck and a new game.....");
 
 // hides the button "start game" on click to prevent reloading page by mistake
 
-$("#btn").click(function(){
-	var button = $("#btn");
+$("#btn-start-game").click(function(){
+	var button = $("#btn-start-game");
 	button.hide();
 });
 
+// hides the "deck" until the game is started
+var deckOfCards = $("#btntakecard");
+deckOfCards.hide();
 
-$('#btn2').click(function(){
-	console.log("Taking a card from the deck........");
-			$.ajax({
-					url: "takeCard.php",
-					success: function (response) { //response is value returned from php (for your example it's "bye bye"
-				   $('section').empty().append(response); //appends the respons to section and clears it on every click (Mikael)
-			  }
-			});
-
-    });
-
-$('#btn3').click(function(){
-	console.log("Dealing out 5 cards to each player........");
-			$.ajax({
-					url: "dealOut.php",
-					success: function (response) { //response is value returned from php (for your example it's "bye bye"
-				   $('section').empty().append(response); //appends the respons to section and clears it on every click (Mikael)
-			  }
-			});
-    });
-
-
-$('#btnregplayer').click(function(){
-	console.log("Registering a player with an input field........");
-	var p = $('#playername').val();
-	console.log('working?', p);
-	$.ajax({
-		url: "reg.player.php?name=" + p,
-		success: function (response) { 
-			$('section').append(response);
-			console.log("what up?", response);
-		}
-	});
+$("#btn-start-game").click(function(){
+	var newDeck = $("#btntakecard");
+	newDeck.show();
 });
 
 
 
-// $( "#btn" ).click(function() {
-//   prompt( "Handler for .click() called." );
-// });
 
 
-$( "#btn" ).click(function() {
+// makes a prompt so the player can register his/her name. 
+$( "#btn-start-game" ).click(function() {
 	console.log("Adding a new player with a prompt........");
   var greeting = "What is your name?"; 
   
 		function insertPlayerName() {
 			var p = $('#submit').val();
-			console.log("after #submit");
+			console.log("Shows a prompt to insert playername.");
 			return prompt(greeting, p);
 			// console.log('working?', p);
-
-			}
+		}
 
 		function addingplayerNameToGame() {
-     var p = insertPlayerName();
-     alert("Hello " + p + " and welcome to this FANTASTIC game!!!! Press 'OK' to continue.");
-
-     $.ajax({
-				url: "reg.player.php?name=" + p,
-				success: function (response) { 
-				$('section').append(response);
-				// console.log("what up?", response);
-				// return prompt(greeting, p);
-			}
-			
-		});
+     	var p = insertPlayerName();
+		    $.ajax({
+					url: "reg.player.php?name=" + p,
+					success: function (response) { 
+						$('.welcome').append("Welcome " + p);
+						console.log("Playername succesfully registered. Displaying: Welcomes ", p + " on the screen.");
+						}
+				});
 	 	}
    	
 		addingplayerNameToGame();
 
-		
-
 });
+
+// adds a "button" in shape of a card to click when to take a card.
+$('#btntakecard').click(function(){
+	console.log("Taking a card from the deck........");
+		$.ajax({
+			url: "takeCard.php",
+				success: function (response) { //response is value returned from php (for your example it's "bye bye"
+			   $('section').empty().append(response); //appends the respons to section and clears it on every click (Mikael)
+			  }
+		});
+});
+
+// deals out 5 cards to each player
+$('#btn-deal-cards').click(function(){
+	console.log("Dealing out 5 cards to each player........");
+		$.ajax({
+				url: "dealOut.php",
+				success: function (response) { //response is value returned from php (for your example it's "bye bye"
+			   $('section').empty().append(response); //appends the respons to section and clears it on every click (Mikael)
+		  }
+		});
+});
+
+
+
+
+
+
+$("#btn-reset").click(function(){
+	if (confirm('Are U sure you want to reset the game and loose all data?')) {
+      location.reload(true);
+   }
+	
+	});
 
 
 
