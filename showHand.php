@@ -6,23 +6,14 @@
 
   session_start();
 
-  $playerName = $_GET["name"];
-
   $str = file_get_contents("game.dat");
   $table = unserialize($str);
 
-  $playerId = $table-> registerPlayer($playerName);
-  $_SESSION["id"] = $playerId;
+  $humanPlayer = $table->getPlayer($_SESSION["id"]); //selects the first player in the array
 
-  echo json_encode($table->players);
+  $humanPlayer->showHand();
 
   $tableserialized = serialize($table);
   file_put_contents("game.dat", $tableserialized);
-
-  // if ($id == NULL) {
-  //   echo "Inte välkommen";
-  // }else {
-  //   echo "välkommen ";
-  // }
 
 ?>

@@ -19,11 +19,21 @@
       array_push($this->hand, $deck->popCard());
     }
 
-    public function showHand(){
-      for($i=0; $i<count($this->hand); $i++){  // loops through to get the remaining "cards"
-        print_r($this->hand[$i]);                // echos out what remains in the hand array
-      }
-    }
+
+      // TESTING -------------------
+    function showHand(){
+    shuffle($this->hand);
+    echo json_encode($this->hand);
+  }
+      // TESTING -------------------
+
+    
+
+    // public function showHand(){
+    //   for($i=0; $i<count($this->hand); $i++){  // loops through to get the remaining "cards"
+    //     print_r($this->hand[$i]);                // echos out what remains in the hand array
+    //   }
+    // }
   }
 
 ?>

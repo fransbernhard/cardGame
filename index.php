@@ -62,14 +62,12 @@ spl_autoload_register(function ($className) {
 						<span class="got-it" title="OK, I got it. Let´s play....">OK, I got it. Let´s play....</span></p>
 				</header>
 		
-		<button id="btn-deal-cards">Deal Out</button>
-		
 		<div class="greentable">
 			<div id="area">
 				<div class="welcome"></div>
 				<button id="btn-start-game">START NEW GAME</button>
-				<button id="btntakecard"></button>
-				<section><br><br>
+				<button id="btntakecard" title="Click here to take a card from the deck"></button>
+				<section class="show-the-cards"><br><br>
 				</section>
 			</div>
 		</div>
