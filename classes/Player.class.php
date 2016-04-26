@@ -20,8 +20,12 @@
     }
 
     function showHand(){
-    echo json_encode($this->hand);
-  }
+      echo json_encode($this->hand);
+    }
+
+    function displayCardsInHand(){
+      return $this->hand;
+    }
 
 }
 
