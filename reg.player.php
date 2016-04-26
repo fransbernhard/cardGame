@@ -19,10 +19,4 @@
   $tableserialized = serialize($table);
   file_put_contents("game.dat", $tableserialized);
 
-  // if ($id == NULL) {
-  //   echo "Inte välkommen";
-  // }else {
-  //   echo "välkommen ";
-  // }
-
 ?>

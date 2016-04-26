@@ -32,7 +32,6 @@ ul {
 	list-style: none;
 }
 
-
 .made-by {
 	margin: 5px;
 }
@@ -67,22 +66,6 @@ span.got-it {
 	font-size: 1.4rem;
 	font-weight: bold;
 	cursor: pointer;
-}
-
-.diamonds {
-	color: darkred;
-}
-
-.hearts {
-	color: red;
-}
-
-.clubs {
-	color: black;
-}
-
-.spades {
-	color: darkgrey;
 }
 
 .greentable {
@@ -139,20 +122,10 @@ button#btn-discard-pile {
 img.cardimg{
 	height: 120px;
 	width: auto;
+	margin-right: -60px;
 }
 
 #btn-reset {
-margin-top: 10px;
-float: right;
+	margin-top: 10px;
+	float: right;
 }
-
-li>img {
-	height: 90px;
-	margin-right: -70px;
-}
-
-
-
-
-
-

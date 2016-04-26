@@ -6,11 +6,13 @@
     public $face;
     public $suit;
     public $filePath;
+    public $id;
 
-    function __construct($face, $suit) {
+    function __construct($face, $suit, $id) {
 
       $this->face = $face;
       $this->suit = $suit;
+      $this->id= $id;
 
       switch($face){
         case "Two":

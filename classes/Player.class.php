@@ -27,6 +27,6 @@
       return $this->hand;
     }
 
-}
+  }
 
 ?>

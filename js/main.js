@@ -10,7 +10,6 @@ headerAuthors.click(function(){
 	content.hide();
 });
 
-
 //defines and hides
 var rulesHeadline = $('h3.rules');
 var content = $('p.rules-content');
@@ -27,33 +26,15 @@ content.click(function(){
 	content.hide(600);
 });
 
-
 // a button to start the game
 $("#btn-start-game").click(function(){
 console.log("Now creating new table, new deck and a new game.....");
   $.getJSON("cards.php", function(data){
   	$('#area').html("");
 		data.forEach(function(key){
-			switch(key.suit){
-				case "spades":
-					console.log(key);
-					$('#area').append('<ul><li class="spades"><img class="cardimg" src="' + key.filePath + '"></img></li></ul>');
-					break;
-				case "hearts":
-					console.log(key);
-					$('#area').append('<ul><li class="hearts"><img class="cardimg" src="' + key.filePath + '"></img></li></ul>');
-					break;
-				case "clubs":
-					console.log(key);
-					$('#area').append('<ul><li class="clubs"><img class="cardimg" src="' + key.filePath + '"></img></li></ul>');
-					break;
-				case "diamonds":
-					console.log(key);
-					$('#area').append('<ul><li class="diamonds"><img class="cardimg" src="' + key.filePath + '"></img></li></ul>');
-					break;
-				}
-			}
-		);
+			console.log(key);
+			$("#area").append('<img class="cardimg" src="' + key.filePath + '" data-id="' + key.id + '"></img>');
+		});
 	});
 });
 
@@ -78,132 +59,84 @@ $("#btn-start-game").click(function(){
 	discardPile.show();
 });
 
-// makes a prompt so the player can register his/her name. 
+// makes a prompt so the player can register his/her name.
 $( "#btn-start-game" ).click(function() {
 	console.log("Adding a new player with a prompt........");
-  var greeting = "What is your name?"; 
-  
-		function insertPlayerName() {
-			var p = $('#submit').val();
-			console.log("Shows a prompt to insert playername.");
-			return prompt(greeting, p);
-		}
+  var greeting = "What is your name?";
 
-		function addingplayerNameToGame() {
-     	var p = insertPlayerName();
-		    $.ajax({
-					url: "reg.player.php?name=" + p,
-					success: function (response) { 
-						$('.welcome').append("Welcome " + p);
-						console.log("Playername succesfully registered. Displaying: Welcome ", p + " on the screen.");
-						}
-				});
-	 	}
-   	
-		addingplayerNameToGame();
+	function insertPlayerName() {
+		var p = $('#submit').val();
+		console.log("Shows a prompt to insert playername.");
+		return prompt(greeting, p);
+	}
 
-		console.log("Dealing out 5 cards to each player........");
-		$.ajax({
-				url: "dealOut.php",
-				// success: function (response) { //response is value returned from php
-			 	// $('section').empty().append(response); //appends the respons to section and clears it on every click
-		  // }
-		})
+	function addingplayerNameToGame() {
+   	var p = insertPlayerName();
+    $.ajax({
+			url: "reg.player.php?name=" + p,
+			success: function (response) {
+				$('.welcome').append("Welcome " + p);
+				console.log("Playername succesfully registered. Displaying: Welcome ", p + " on the screen.");
+				}
+		});
+ 	}
+
+	addingplayerNameToGame();
+
+	console.log("Dealing out 5 cards to each player........");
+	$.ajax({
+			url: "dealOut.php",
+			// success: function (response) { //response is value returned from php
+		 	// $('section').empty().append(response); //appends the respons to section and clears it on every click
+	  // }
+	});
 
 	$.getJSON("flipFirstCard.php", function(data){
   	$('#btn-discard-pile').html("");
 		data.forEach(function(key){
-			switch(key.suit){
-				case "spades":
-					console.log(key);
-					$('#btn-discard-pile').append('<img class="cardimg" src="' + key.filePath + '"></img>');
-					break;
-				case "hearts":
-					console.log(key);
-					$('#btn-discard-pile').append('<img class="cardimg" src="' + key.filePath + '"></img>');
-					break;
-				case "clubs":
-					console.log(key);
-					$('#btn-discard-pile').append('<img class="cardimg" src="' + key.filePath + '"></img>');
-					break;
-				case "diamonds":
-					console.log(key);
-					$('#btn-discard-pile').append('<img class="cardimg" src="' + key.filePath + '"></img>');
-					break;
-			}
+			console.log(key);
+			$('#btn-discard-pile').append('<img class="cardimg" src="' + key.filePath + '" data-id="' + key.id + '"></img>');
 		});
-	})
+	});
 
-
-		$.getJSON("showHand.php", function(data){
+	$.getJSON("showHand.php", function(data){
   	$('section.show-the-cards').html("");
 		data.forEach(function(key){
-			switch(key.suit){
-				case "spades":
-					console.log(key);
-					$('section.show-the-cards').append('<ul><li class="spades"><img class="cardimg" src="' + key.filePath + '"></img></li></ul>');
-					break;
-				case "hearts":
-					console.log(key);
-					$('section.show-the-cards').append('<ul><li class="hearts"><img class="cardimg" src="' + key.filePath + '"></img></li></ul>');
-					break;
-				case "clubs":
-					console.log(key);
-					$('section.show-the-cards').append('<ul><li class="clubs"><img class="cardimg" src="' + key.filePath + '"></img></li></ul>');
-					break;
-				case "diamonds":
-					console.log(key);
-					$('section.show-the-cards').append('<ul><li class="diamonds"><img class="cardimg" src="' + key.filePath + '"></img></li></ul>');
-					break;
-				}
-			}
-		);
+			console.log(key);
+			$('section.show-the-cards').append('<img class="cardimg" src="' + key.filePath + '" data-id="' + key.id + '"></img>');
+		});
 	});
-});
 
+});
 
 // adds a "button" in shape of a card to click when to take a card.
 $('#btntakecard').click(function(){
 	console.log("Taking a card from the deck........");
-		$.ajax({
-			url: "takeCard.php",
-				success: function (response) { //response is value returned from php
-			   $('section').empty().append(response); //appends the respons to section and clears it on every click
-			  }
-		});
-
-		$.getJSON("showHand.php", function(data){
-  	$('section.show-the-cards').html("");
-		data.forEach(function(key){
-			switch(key.suit){
-				case "spades":
-					console.log(key);
-					$('section.show-the-cards').append('<ul><li class="spades"><img class="cardimg" src="' + key.filePath + '"></img></li></ul>');
-					break;
-				case "hearts":
-					console.log(key);
-					$('section.show-the-cards').append('<ul><li class="hearts"><img class="cardimg" src="' + key.filePath + '"></img></li></ul>');
-					break;
-				case "clubs":
-					console.log(key);
-					$('section.show-the-cards').append('<ul><li class="clubs"><img class="cardimg" src="' + key.filePath + '"></img></li></ul>');
-					break;
-				case "diamonds":
-					console.log(key);
-					$('section.show-the-cards').append('<ul><li class="diamonds"><img class="cardimg" src="' + key.filePath + '"></img></li></ul>');
-					break;
-				}
-			}
-		);
+	$.ajax({
+		url: "takeCard.php",
+		success: function (response) { //response is value returned from php
+	  	$('section').empty().append(response); //appends the respons to section and clears it on every click
+	  }
 	});
+
+	$.getJSON("showHand.php", function(data){
+		$('section.show-the-cards').html("");
+		data.forEach(function(key){
+			console.log(key);
+			$('section.show-the-cards').append('<img class="cardimg" src="' + key.filePath + '" data-id="' + key.id + '"></img>');
+		});
+	});
+
 });
 
 // a simple reset-function with a confirm....
 $("#btn-reset").click(function(){
 	if (confirm('Are U sure you want to reset the game and loose all data?')) {
-      location.reload(true);
-   }
+  	location.reload(true);
+  }
 });
 
-
-
+//Använda DENNA för att hämta data-id 
+$("section").click(function(value){
+	console.log(value);
+});

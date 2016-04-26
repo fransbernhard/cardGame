@@ -9,6 +9,7 @@
     public $deck = [];
     public $numberOfCards = 5;
     public $discardPile = [];
+    public $cardId = 0;
 
     function __construct() {
       $this->suit = ["spades", "hearts", "clubs", "diamonds"];
@@ -17,7 +18,8 @@
 
       foreach ($this->suit as $suit) {
         foreach ($this->face as $face) {
-          $this->deck[] = new Card($face, $suit);
+          $this->deck[] = new Card($face, $suit, $id);
+          $id++;
         }
       }
       shuffle($this->deck);
