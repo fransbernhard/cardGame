@@ -39,6 +39,11 @@
       echo json_encode($this);
     }
 
+    public function flipFirstCard(){
+      array_push($this->deck->discardPile, $this->deck->popCard());
+      echo json_encode($this->deck->discardPile);
+    }
+
     public function getPlayer($indexNumber){
       return $this -> players[$indexNumber];
     }

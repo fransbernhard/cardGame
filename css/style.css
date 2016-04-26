@@ -1,3 +1,8 @@
+
+* {
+	box-sizing: border-box;
+}
+
 body {
 	background-color: #B8860B;
 	color: #fff;
@@ -120,6 +125,20 @@ button {
 	box-shadow: 2px 2px 2px #333;
 	font-family: 'Unica One';
 	color: #000;
+}
+
+#btn-discard-pile {
+	margin-top: 60px;
+	padding: 0;
+}
+
+button#btn-discard-pile {
+	background: none;
+}
+
+img.cardimg{
+	height: 120px;
+	width: auto;
 }
 
 #btn-reset {

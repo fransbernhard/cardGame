@@ -67,6 +67,7 @@ spl_autoload_register(function ($className) {
 				<div class="welcome"></div>
 				<button id="btn-start-game">START NEW GAME</button>
 				<button id="btntakecard" title="Click here to take a card from the deck"></button>
+				<button id="btn-discard-pile" title=""></button>
 				<section class="show-the-cards"><br><br>
 				</section>
 			</div>

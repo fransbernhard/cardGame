@@ -28,6 +28,7 @@ content.click(function(){
 });
 
 
+// a button to start the game
 $("#btn-start-game").click(function(){
 console.log("Now creating new table, new deck and a new game.....");
   $.getJSON("cards.php", function(data){
@@ -66,12 +67,16 @@ $("#btn-start-game").click(function(){
 var deckOfCards = $("#btntakecard");
 deckOfCards.hide();
 
+var discardPile = $("#btn-discard-pile");
+discardPile.hide();
+
+//shows all the buttons when game is started
 $("#btn-start-game").click(function(){
 	var newDeck = $("#btntakecard");
+	var discardPile = $("#btn-discard-pile");
 	newDeck.show();
+	discardPile.show();
 });
-
-
 
 // makes a prompt so the player can register his/her name. 
 $( "#btn-start-game" ).click(function() {
@@ -82,7 +87,6 @@ $( "#btn-start-game" ).click(function() {
 			var p = $('#submit').val();
 			console.log("Shows a prompt to insert playername.");
 			return prompt(greeting, p);
-			// console.log('working?', p);
 		}
 
 		function addingplayerNameToGame() {
@@ -102,9 +106,34 @@ $( "#btn-start-game" ).click(function() {
 		$.ajax({
 				url: "dealOut.php",
 				// success: function (response) { //response is value returned from php
-			 //   // $('section').empty().append(response); //appends the respons to section and clears it on every click
+			 	// $('section').empty().append(response); //appends the respons to section and clears it on every click
 		  // }
 		})
+
+	$.getJSON("flipFirstCard.php", function(data){
+  	$('#btn-discard-pile').html("");
+		data.forEach(function(key){
+			switch(key.suit){
+				case "spades":
+					console.log(key);
+					$('#btn-discard-pile').append('<img class="cardimg" src="' + key.filePath + '"></img>');
+					break;
+				case "hearts":
+					console.log(key);
+					$('#btn-discard-pile').append('<img class="cardimg" src="' + key.filePath + '"></img>');
+					break;
+				case "clubs":
+					console.log(key);
+					$('#btn-discard-pile').append('<img class="cardimg" src="' + key.filePath + '"></img>');
+					break;
+				case "diamonds":
+					console.log(key);
+					$('#btn-discard-pile').append('<img class="cardimg" src="' + key.filePath + '"></img>');
+					break;
+			}
+		});
+	})
+
 
 		$.getJSON("showHand.php", function(data){
   	$('section.show-the-cards').html("");
@@ -131,7 +160,6 @@ $( "#btn-start-game" ).click(function() {
 		);
 	});
 });
-
 
 
 // adds a "button" in shape of a card to click when to take a card.
@@ -169,19 +197,6 @@ $('#btntakecard').click(function(){
 		);
 	});
 });
-
-
-// deals out 5 cards to each player
-// $('#btn-deal-cards').click(function(){
-// 	console.log("Dealing out 5 cards to each player........");
-// 		$.ajax({
-// 				url: "dealOut.php",
-// 				success: function (response) { //response is value returned from php
-// 			   $('section').empty().append(response); //appends the respons to section and clears it on every click
-// 		  }
-// 		});
-// });
-
 
 // a simple reset-function with a confirm....
 $("#btn-reset").click(function(){

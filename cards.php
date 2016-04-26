@@ -7,7 +7,7 @@
   });
 
   $table = new Table;
-  var_dump($table);
+  // var_dump($table);
 
   //---------------------------------serializing
   $tableserialized = serialize($table);
