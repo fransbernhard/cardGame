@@ -7,7 +7,6 @@
   });
 
   $table = new Table;
-  $table->dealOut();
   var_dump($table);
 
   //---------------------------------serializing

@@ -101,9 +101,9 @@ $( "#btn-start-game" ).click(function() {
 		console.log("Dealing out 5 cards to each player........");
 		$.ajax({
 				url: "dealOut.php",
-				success: function (response) { //response is value returned from php
-			   // $('section').empty().append(response); //appends the respons to section and clears it on every click
-		  }
+				// success: function (response) { //response is value returned from php
+			 //   // $('section').empty().append(response); //appends the respons to section and clears it on every click
+		  // }
 		})
 
 		$.getJSON("showHand.php", function(data){
@@ -172,15 +172,15 @@ $('#btntakecard').click(function(){
 
 
 // deals out 5 cards to each player
-$('#btn-deal-cards').click(function(){
-	console.log("Dealing out 5 cards to each player........");
-		$.ajax({
-				url: "dealOut.php",
-				success: function (response) { //response is value returned from php
-			   $('section').empty().append(response); //appends the respons to section and clears it on every click
-		  }
-		});
-});
+// $('#btn-deal-cards').click(function(){
+// 	console.log("Dealing out 5 cards to each player........");
+// 		$.ajax({
+// 				url: "dealOut.php",
+// 				success: function (response) { //response is value returned from php
+// 			   $('section').empty().append(response); //appends the respons to section and clears it on every click
+// 		  }
+// 		});
+// });
 
 
 // a simple reset-function with a confirm....

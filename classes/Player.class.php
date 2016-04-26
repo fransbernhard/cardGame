@@ -22,7 +22,7 @@
 
       // TESTING -------------------
     function showHand(){
-    shuffle($this->hand);
+    // shuffle($this->hand);
     echo json_encode($this->hand);
   }
       // TESTING -------------------
