@@ -35,6 +35,10 @@
       }
       return array_pop($this->deck);
     }
+
+    public function returnDiscardPile() {
+      echo json_encode($this->discardPile[0]);
+    }
   }
 
 ?>

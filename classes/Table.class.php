@@ -51,8 +51,12 @@
     }
 
     public function laydownInDiscardPile($indexCard){
-        array_push($this->deck->discardPile, $indexCard);
+        array_unshift($this->deck->discardPile, $indexCard);
         echo json_encode($this->deck->discardPile);
+    }
+
+    public function showDiscardPile() {
+      $this->deck->returnDiscardPile();
     }
 
     //trigger: player press card

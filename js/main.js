@@ -156,10 +156,26 @@ $("section").click(function(ev){
 		});
 	});
 
-	
+});
+
+
+$("#update").click(function(){
+
+	$.ajax({
+		url: "updateDiscardPile.php",
+		success: function (response) {
+			$('#btn-discard-pile').html("");
+			response.forEach(function(key){
+				console.log(key);
+				$('#btn-discard-pile').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
+			});
+		}
+
+	});
+
 
 });
 
-	
+
 
 
