@@ -145,8 +145,7 @@ $("section").click(function(ev){
 		url: "layDownCard.php?id=" + c,
 		success: function (response) { //response is value returned from php
 	  	// $('section').empty().append(response); //appends the respons to section and clears it on every click
-	  }
-	});
+
 	
 	$.getJSON("showHand.php", function(data){
 		$('section.show-the-cards').html("");
@@ -156,14 +155,10 @@ $("section").click(function(ev){
 		});
 	});
 
-	$.ajax({
-		url: "updateDiscardPile.php",
-		success: function (response) { //response is value returned from php
-	  	// $('#btn-discard-pile').empty().append(response); //appends the respons to section and clears it on every click
-	  }
-	});
+
 	
 	$.getJSON("updateDiscardPile.php", function(data){
+		console.log("hej",data);
 		$('#btn-discard-pile').html("");
 		data.forEach(function(key){
 			console.log(key);
@@ -171,8 +166,12 @@ $("section").click(function(ev){
 		});
 	});
 	
+		  }
+	});
 
 });
+
+
 
 
 

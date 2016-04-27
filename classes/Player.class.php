@@ -18,6 +18,7 @@
            return $returnedCard[0];
         }
       }
+      return null;
     }
 
     public function takeCardFromDeck($deck) {

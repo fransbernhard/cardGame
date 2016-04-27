@@ -15,11 +15,19 @@ spl_autoload_register(function ($className) {
 
   $indexCard = $humanPlayer -> takeCardFromHand($playedCard);
 
-  $table -> layDownInDiscardPile($indexCard);
-  
-  $humanPlayer -> showHand();
+  if($indexCard == null){
+    http_response_code(400);
+  }else{
+    
+    $table -> layDownInDiscardPile($indexCard);
+    
+    $humanPlayer -> showHand();
 
-  $tableserialized = serialize($table);
-  file_put_contents("game.dat", $tableserialized);
+    $tableserialized = serialize($table);
+    file_put_contents("game.dat", $tableserialized);
+
+  }
+
+  
 
 ?>
