@@ -115,7 +115,7 @@ $('#btntakecard').click(function(){
 	$.ajax({
 		url: "takeCard.php",
 		success: function (response) { //response is value returned from php
-	  	$('section').empty().append(response); //appends the respons to section and clears it on every click
+	  	// $('section').empty().append(response); //appends the respons to section and clears it on every click
 	  }
 	});
 
@@ -144,7 +144,7 @@ $("section").click(function(ev){
 	$.ajax({
 		url: "layDownCard.php?id=" + c,
 		success: function (response) { //response is value returned from php
-	  	$('section').empty().append(response); //appends the respons to section and clears it on every click
+	  	// $('section').empty().append(response); //appends the respons to section and clears it on every click
 	  }
 	});
 	
@@ -159,7 +159,7 @@ $("section").click(function(ev){
 	$.ajax({
 		url: "updateDiscardPile.php",
 		success: function (response) { //response is value returned from php
-	  	$('#btn-discard-pile').empty().append(response); //appends the respons to section and clears it on every click
+	  	// $('#btn-discard-pile').empty().append(response); //appends the respons to section and clears it on every click
 	  }
 	});
 	
@@ -174,15 +174,6 @@ $("section").click(function(ev){
 
 });
 
-
-
-
-// //updates the discard pile
-// $("section").click(function(){
-
-	
-
-// });
 
 
 

@@ -118,6 +118,10 @@ button {
 	box-shadow: none;
 }
 
+#btn-discard-pile img{
+	margin-right: -80px;
+}
+
 button#btn-discard-pile {
 	background: none;
 }
