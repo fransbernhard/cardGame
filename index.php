@@ -75,8 +75,7 @@ spl_autoload_register(function ($className) {
 			</div>
 
 			<button id="btn-reset">Reset the game and start over</button>
-			<button id="update">Reset discardpile</button>
-
+		
 		</div>
 
 

@@ -115,6 +115,7 @@ button {
 #btn-discard-pile {
 	margin-top: 60px;
 	padding: 0;
+	box-shadow: none;
 }
 
 button#btn-discard-pile {

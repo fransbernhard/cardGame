@@ -51,7 +51,7 @@
     }
 
     public function laydownInDiscardPile($indexCard){
-        array_unshift($this->deck->discardPile, $indexCard);
+        array_push($this->deck->discardPile, $indexCard);
         echo json_encode($this->deck->discardPile);
     }
 

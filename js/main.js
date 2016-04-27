@@ -156,25 +156,35 @@ $("section").click(function(ev){
 		});
 	});
 
-});
-
-
-$("#update").click(function(){
-
 	$.ajax({
 		url: "updateDiscardPile.php",
-		success: function (response) {
-			$('#btn-discard-pile').html("");
-			response.forEach(function(key){
-				console.log(key);
-				$('#btn-discard-pile').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
-			});
-		}
-
+		success: function (response) { //response is value returned from php
+	  	$('#btn-discard-pile').empty().append(response); //appends the respons to section and clears it on every click
+	  }
 	});
-
+	
+	$.getJSON("updateDiscardPile.php", function(data){
+		$('#btn-discard-pile').html("");
+		data.forEach(function(key){
+			console.log(key);
+			$('#btn-discard-pile').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
+		});
+	});
+	
 
 });
+
+
+
+
+// //updates the discard pile
+// $("section").click(function(){
+
+	
+
+// });
+
+
 
 
 
