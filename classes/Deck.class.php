@@ -18,8 +18,8 @@
 
       foreach ($this->suit as $suit) {
         foreach ($this->face as $face) {
-          $this->deck[] = new Card($face, $suit, $id);
-          $id++;
+          $this->deck[] = new Card($face, $suit, $cardId);
+          $cardId++;
         }
       }
       shuffle($this->deck);
