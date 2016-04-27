@@ -33,7 +33,7 @@ console.log("Now creating new table, new deck and a new game.....");
   	$('#area').html("");
 		data.forEach(function(key){
 			console.log(key);
-			$("#area").append('<img class="cardimg" src="' + key.filePath + '" data-id="' + key.id + '"></img>');
+			$("#area").append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
 		});
 	});
 });
@@ -95,7 +95,7 @@ $( "#btn-start-game" ).click(function() {
   	$('#btn-discard-pile').html("");
 		data.forEach(function(key){
 			console.log(key);
-			$('#btn-discard-pile').append('<img class="cardimg" src="' + key.filePath + '" data-id="' + key.id + '"></img>');
+			$('#btn-discard-pile').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
 		});
 	});
 
@@ -103,7 +103,7 @@ $( "#btn-start-game" ).click(function() {
   	$('section.show-the-cards').html("");
 		data.forEach(function(key){
 			console.log(key);
-			$('section.show-the-cards').append('<img class="cardimg" src="' + key.filePath + '" data-id="' + key.id + '"></img>');
+			$('section.show-the-cards').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
 		});
 	});
 
@@ -123,7 +123,7 @@ $('#btntakecard').click(function(){
 		$('section.show-the-cards').html("");
 		data.forEach(function(key){
 			console.log(key);
-			$('section.show-the-cards').append('<img class="cardimg" src="' + key.filePath + '" data-id="' + key.id + '"></img>');
+			$('section.show-the-cards').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
 		});
 	});
 
@@ -136,7 +136,20 @@ $("#btn-reset").click(function(){
   }
 });
 
-//Använda DENNA för att hämta data-id 
-$("section").click(function(value){
-	console.log(value);
+//Använda DENNA för att hämta data-id
+$("section").click(function(ev){
+	// console.log(value);
+	// alert(event.target.id);
+	var c =  event.target.id;
+	console.log(c);
+	console.log("Laying down a card from your hand........");
+	$.ajax({
+		url: "layDownCard.php?id=" + c,
+		success: function (response) { //response is value returned from php
+	  	$('section').empty().append(response); //appends the respons to section and clears it on every click
+	  }
+	});
+
 });
+
+

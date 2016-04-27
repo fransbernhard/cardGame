@@ -11,8 +11,13 @@
       $this->name = $name;
     }
 
-    public function layDownCard(){
-      array_shift($this->hand); // Shift the first "card" out
+    public function takeCardFromHand($playedCard){       // should be array search to get index then slice or splice
+      foreach ($this->hand as $index => $card) {
+        if ($card->id == $playedCard) {
+           $returnedCard = array_splice($this->hand, $index, 1);
+           return $returnedCard[0];
+        }
+      }
     }
 
     public function takeCardFromDeck($deck) {

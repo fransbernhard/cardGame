@@ -50,6 +50,11 @@
       return $this->deck;
     }
 
+    public function laydownInDiscardPile($indexCard){
+        array_unshift($this->deck->discardPile, $indexCard);
+        echo json_encode($this->deck->discardPile);
+    }
+
     //trigger: player press card
     //  function draw(){
     //   foreach ($this->players as $player) {
