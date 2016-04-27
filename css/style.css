@@ -71,7 +71,7 @@ span.got-it {
 .greentable {
 	margin-top: 20px;
 	width: 100%;
-	height: 500px;
+	height: 400px;
 	background-color: green;
 	background-color: #145214;
 	border: 8px solid #8B4513;
@@ -98,6 +98,7 @@ button {
 
 #btn-start-game {
 	margin-top: 40px;
+	padding: 10px;
 }
 
 #btntakecard {
@@ -128,4 +129,5 @@ img.cardimg{
 #btn-reset {
 	margin-top: 10px;
 	float: right;
+	padding: 10px;
 }

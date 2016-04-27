@@ -16,11 +16,8 @@ spl_autoload_register(function ($className) {
   $indexCard = $humanPlayer -> takeCardFromHand($playedCard);
 
   $table -> layDownInDiscardPile($indexCard);
-
-
+  
   $humanPlayer -> showHand();
-
-
 
   $tableserialized = serialize($table);
   file_put_contents("game.dat", $tableserialized);

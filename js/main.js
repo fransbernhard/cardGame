@@ -138,8 +138,6 @@ $("#btn-reset").click(function(){
 
 //Använda DENNA för att hämta data-id
 $("section").click(function(ev){
-	// console.log(value);
-	// alert(event.target.id);
 	var c =  event.target.id;
 	console.log(c);
 	console.log("Laying down a card from your hand........");
@@ -149,7 +147,19 @@ $("section").click(function(ev){
 	  	$('section').empty().append(response); //appends the respons to section and clears it on every click
 	  }
 	});
+	
+	$.getJSON("showHand.php", function(data){
+		$('section.show-the-cards').html("");
+		data.forEach(function(key){
+			console.log(key);
+			$('section.show-the-cards').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
+		});
+	});
+
+	
 
 });
+
+	
 
 
