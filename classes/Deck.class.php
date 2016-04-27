@@ -9,13 +9,13 @@
     public $deck = [];
     public $numberOfCards = 5;
     public $discardPile = [];
-    public $cardId = 0;
+    
 
     function __construct() {
       $this->suit = ["spades", "hearts", "clubs", "diamonds"];
       $this->face = ["Two", "Three", "Four", "Five", "Six", "Seven", "Eight",
       "Nine", "Ten", "Jack", "Queen", "King", "Ace"];
-
+      $cardId = 0;
       foreach ($this->suit as $suit) {
         foreach ($this->face as $face) {
           $this->deck[] = new Card($face, $suit, $cardId);
