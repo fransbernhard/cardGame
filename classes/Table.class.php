@@ -51,10 +51,12 @@
     }
 
     public function laydownInDiscardPile($indexCardObj){
-      // if($indexCardObj->suit == end($this->deck->discardPile->suit)){
+      if($indexCardObj->suit == $this->deck->discardPile[0]->suit||$indexCardObj->face == $this->deck->discardPile[0]->face){
         array_unshift($this->deck->discardPile, $indexCardObj);
         echo json_encode($this->deck->discardPile);
-      // }
+      }else{
+        http_response_code(400);
+      }
 
         
     }
