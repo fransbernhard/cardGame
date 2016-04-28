@@ -51,11 +51,23 @@
     }
 
     public function laydownInDiscardPile($indexCardObj){
-      if($indexCardObj->suit == $this->deck->discardPile[0]->suit||$indexCardObj->face == $this->deck->discardPile[0]->face){
+      // if($indexCardObj->suit!=$this->deck->discardPile[0]->suit||         //TAKE NEW CARD
+      //   $indexCardObj->face!=$this->deck->discardPile[0]->face||
+      //   $indexCardObj->point!=$this->deck->discardPile[0]->point[50]){
+      //     // how will this work?
+      // }else if($indexCardObj->point == 50){                               //LAY DOWN EIGHT
+      //   array_unshift($this->deck->discardPile, $indexCardObj);
+      //   echo json_encode($this->deck->discardPile);     
+      if($indexCardObj->suit == $this->deck->discardPile[0]->suit||
+        $indexCardObj->face == $this->deck->discardPile[0]->face){
         array_unshift($this->deck->discardPile, $indexCardObj);
-        echo json_encode($this->deck->discardPile);
-      }else{
-        http_response_code(400);
+        // echo json_encode($this->deck->discardPile);
+        $this->getPlayer($_SESSION["id"])->updateHand($indexCardObj);
+        return "okey";
+      }else if($indexCardObj->point == 50){                               //LAY DOWN EIGHT
+        array_unshift($this->deck->discardPile, $indexCardObj);       
+        $this->getPlayer($_SESSION["id"])->updateHand($indexCardObj);
+        return ?;
       }
 
         

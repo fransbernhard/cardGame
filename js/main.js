@@ -167,7 +167,7 @@ $("section").click(function(ev){
 			$.getJSON("updateDiscardPile.php", function(data){
 					$('#btn-discard-pile').html("");
 					var i = 0;
-				data.forEach(function(key){
+				data.hand.forEach(function(key){
 					console.log(key);
 					if(i == 0){
 						console.log(i);

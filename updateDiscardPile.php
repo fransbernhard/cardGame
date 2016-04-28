@@ -10,7 +10,8 @@ spl_autoload_register(function ($className) {
   $table = unserialize($str);
 
   $table->showDiscardPile();
-
+  
+  
   $tableserialized = serialize($table);
   file_put_contents("game.dat", $tableserialized);
 

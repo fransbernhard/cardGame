@@ -19,9 +19,10 @@ spl_autoload_register(function ($className) {
     http_response_code(400);
   }else{
     
-    $table -> layDownInDiscardPile($indexCardObj);
+    $res["message"] = $table -> layDownInDiscardPile($indexCardObj);
+    $res["discardpile"] = $humanPlayer -> getHand();
+    echo json_encode($res);
     
-    $humanPlayer -> showHand();
 
     $tableserialized = serialize($table);
     file_put_contents("game.dat", $tableserialized);
