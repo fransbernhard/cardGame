@@ -111,7 +111,6 @@ $("#btn-start-game").click(function(){
 });
 
 
-
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 // ---------------------------- clickfunction take card from deck
 
@@ -155,7 +154,7 @@ $("section").click(function(ev){
 		url: "layDownCard.php?id=" + c,
 		success: function (response) {
 
-	// theese 2 functions waits for the respoonse in function above to prevent "glitches"
+			// theese 2 functions waits for the respoonse in function above to prevent "glitches"
 			$.getJSON("showHand.php", function(data){
 				$('section.show-the-cards').html("");
 				data.forEach(function(key){
@@ -184,7 +183,6 @@ $("section").click(function(ev){
 					$('section.show-the-cards').append(data.message);
 				});
 			});
-			
 		}
 	});
 });

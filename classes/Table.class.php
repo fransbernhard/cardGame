@@ -59,7 +59,7 @@
       //   return "okey";
       // } else if ($indexCardObj->point == 50){                               //LAY DOWN EIGHT
         array_unshift($this->deck->discardPile, $indexCardObj);
-        return "DU VANN!";
+        return "ADD CARD IN DISCARD PILE!";
         // $this->getPlayer($_SESSION["id"])->updateHand($indexCardObj);
       }
       // $this->getPlayer($_SESSION["id"])->updateHand($indexCardObj);
@@ -69,21 +69,18 @@
       $this->deck->returnDiscardPile();
     }
 
-    //trigger: player press card
-    //  function draw(){
-    //   foreach ($this->players as $player) {
-    //     $hand = $player->displayCardsInHand(); //array with playersn hand
-    //   }
-
-    // }
-
-    //   $card;
-
+    //::::::::::::::1. HAND IS EMPTY PLAYER WON
     //  if ($this->hand >= 0){ //1. Hand is empty - player won
     //    echo "Player Won!"
-    //  } else if ($card != $suit->topCard || $face->topCard || "8"->topCard) { //2. TAKE NEW CARD
+    //  }
+
+    //:::::::::::::2. TAKE NEW CARD
+    // else if ($card != $suit->topCard || $face->topCard || "8"->topCard) {
     //    echo "Take New Card";
-    //  } else if ($card == "8") {            //3. LAY DOWN 8 AND CHOOSE SUIT
+    //  }
+
+    //:::::::::::::3. LAY DOWN 8 AND CHOOSE SUIT
+    // else if ($card == "8") {
     //    array_splice($this->discardPile, $this->hand)
     //    return $suit;
     //  } else if ($card == $suit->topCard){ //4. SAME SUIT
