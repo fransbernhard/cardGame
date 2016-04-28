@@ -13,13 +13,13 @@ spl_autoload_register(function ($className) {
 
   $humanPlayer = $table->getPlayer($_SESSION["id"]);
 
-  $indexCard = $humanPlayer -> takeCardFromHand($playedCard);
+  $indexCardObj = $humanPlayer -> takeCardFromHand($playedCard);
 
-  if($indexCard == null){
+  if($indexCardObj == null){
     http_response_code(400);
   }else{
     
-    $table -> layDownInDiscardPile($indexCard);
+    $table -> layDownInDiscardPile($indexCardObj);
     
     $humanPlayer -> showHand();
 

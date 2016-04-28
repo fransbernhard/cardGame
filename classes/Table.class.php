@@ -50,9 +50,13 @@
       return $this->deck;
     }
 
-    public function laydownInDiscardPile($indexCard){
-        array_push($this->deck->discardPile, $indexCard);
+    public function laydownInDiscardPile($indexCardObj){
+      // if($indexCardObj->suit == end($this->deck->discardPile->suit)){
+        array_unshift($this->deck->discardPile, $indexCardObj);
         echo json_encode($this->deck->discardPile);
+      // }
+
+        
     }
 
     public function showDiscardPile() {

@@ -166,9 +166,14 @@ $("section").click(function(ev){
 			
 			$.getJSON("updateDiscardPile.php", function(data){
 					$('#btn-discard-pile').html("");
+					var i = 0;
 				data.forEach(function(key){
 					console.log(key);
-					$('#btn-discard-pile').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
+					if(i == 0){
+						console.log(i);
+						$('#btn-discard-pile').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
+						i++;
+					}
 				});
 			});
 	
