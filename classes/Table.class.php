@@ -51,22 +51,30 @@
     }
 
     public function laydownInDiscardPile($indexCardObj){
-      //IF HAND EMPTY - PLAYER WINS
-      // if($indexCardObj->suit == $this->deck->discardPile[0]->suit||
-      //   $indexCardObj->face == $this->deck->discardPile[0]->face){
-      //   array_unshift($this->deck->discardPile, $indexCardObj);
-      //   // echo json_encode($this->deck->discardPile);
-      //   return "okey";
-      // } else if ($indexCardObj->point == 50){                               //LAY DOWN EIGHT
+      // IF CARD IS SAME FACE OR SAME SUIT - UNSHIFT TO DISCARDPILE
+      if($indexCardObj->suit == $this->deck->discardPile[0]->suit||
+        $indexCardObj->face == $this->deck->discardPile[0]->face){
         array_unshift($this->deck->discardPile, $indexCardObj);
-        return "ADD CARD IN DISCARD PILE!";
-        // $this->getPlayer($_SESSION["id"])->updateHand($indexCardObj);
+        // echo json_encode($this->deck->discardPile);
+        return "YES";
+
+      // IF CARD IS EIGHT - UNSHIFT TO DISCARDPILE
+      } else if ($indexCardObj->point == 50){
+        array_unshift($this->deck->discardPile, $indexCardObj);
+        return "EIGHT";
+        // IF NONE ABOVE - UNSHIFT TO HAND
       }
-      // $this->getPlayer($_SESSION["id"])->updateHand($indexCardObj);
-    // }
+      $this->getPlayer($_SESSION["id"])->updateHand($indexCardObj);
+      return "NO";
+    }
 
     public function showDiscardPile() {
       $this->deck->returnDiscardPile();
+    }
+
+    public function checkWinner($sessionId){
+      // check if this players hand is empty
+      // if ($this->)
     }
 
     //::::::::::::::1. HAND IS EMPTY PLAYER WON
@@ -83,12 +91,21 @@
     // else if ($card == "8") {
     //    array_splice($this->discardPile, $this->hand)
     //    return $suit;
-    //  } else if ($card == $suit->topCard){ //4. SAME SUIT
-    //    if ($card == $face->hand){         //5. SAME SUIT & SAME FACE
+    //  }
+
+    //::::::::::::4. SAME SUIT
+    // else if ($card == $suit->topCard){
+
+          //::::::::::::::5. DOUBLE CARD DRAW
+    //    if ($card == $face->hand){
     //      array_splice($this->discardPile, $this->hand) //with the lowest index, sort desc
     //    }
+
     //    array_splice($this->discardPile, $this->hand)
-    // } else if ($card == $face->topCard){  //6. SAME FACE
+    // }
+
+    //::::::::::::::6. SAME FACE
+    // else if ($card == $face->topCard){
     //   array_splice($this->discardPile, $this->hand)
     // }
 

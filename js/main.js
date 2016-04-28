@@ -153,6 +153,14 @@ $("section").click(function(ev){
 	$.ajax({
 		url: "layDownCard.php?id=" + c,
 		success: function (response) {
+			response = JSON.parse(response);
+			if(response.message === "NO"){
+				alert(response.message);
+			} else if (response.message === "YES") {
+				alert(response.message);
+			} else {
+				alert(response.message);
+			}
 
 			// theese 2 functions waits for the respoonse in function above to prevent "glitches"
 			$.getJSON("showHand.php", function(data){
@@ -176,13 +184,13 @@ $("section").click(function(ev){
 				});
 			});
 
-			$.getJSON("layDownCard.php", function(data){
-				$('section.show-the-cards').html("");
-				data.message.forEach(function(key){
-					console.log(key);
-					$('section.show-the-cards').append(data.message);
-				});
-			});
+			// $.getJSON("layDownCard.php", function(data){
+			// 	$('section.show-the-cards').html("");
+			// 	data.message.forEach(function(key){
+			// 		console.log(key);
+			// 		$('section.show-the-cards').append(data.message);
+			// 	});
+			// });
 		}
 	});
 });

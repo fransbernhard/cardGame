@@ -10,24 +10,21 @@
 
   $str = file_get_contents("game.dat");
   $table = unserialize($str);
-
   $humanPlayer = $table->getPlayer($_SESSION["id"]);
 
   $indexCardObj = $humanPlayer -> takeCardFromHand($playedCard);
 
   if ($indexCardObj == null) { //INVALID CARD (CLICK)
     http_response_code(400);
-  } elseif (empty($humanPlayer->getHand())){ //IF HAND EMPTY - PLAYER WINS
-    $res["message"] = $table -> layDownInDiscardPile($indexCardObj);
-    echo json_encode($res);
   } else {
-    $res["discardpile"] = $humanPlayer -> getHand();
+    $res["message"] = $table -> layDownInDiscardPile($indexCardObj);
+    if ($res['message'] === "YES" || $res['message'] === "EIGHT"){
+      $table->checkWinner($_SESSION["id"]);
+    }
     echo json_encode($res);
-
-    $tableserialized = serialize($table);
-    file_put_contents("game.dat", $tableserialized);
   }
 
-
+  $tableserialized = serialize($table);
+  file_put_contents("game.dat", $tableserialized);
 
 ?>
