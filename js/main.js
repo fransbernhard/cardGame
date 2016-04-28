@@ -1,5 +1,5 @@
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-//----------------------------- SOME VISUAL EFFECTS FOR THE HEADER AND RULES ---------------------- 
+//----------------------------- SOME VISUAL EFFECTS FOR THE HEADER AND RULES ----------------------
 
 //defines and hides
 var headerAuthors = $('h3.authors');
@@ -37,12 +37,12 @@ discardPile.hide();
 
 
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-//----------------------------- STARTS THE GAME ---------------------- 
+//----------------------------- STARTS THE GAME ----------------------
 
 // CLICK ON THE STARTBUTTON INITIATES THE GAME
 $("#btn-start-game").click(function(){
 
-console.log("Now creating new table, new deck and a new game.....");
+	console.log("Now creating new table, new deck and a new game.....");
   $.getJSON("cards.php", function(data){
   	$('#area').html("");
 		data.forEach(function(key){
@@ -153,9 +153,9 @@ $("section").click(function(ev){
 	console.log("Laying down a card from your hand........");
 	$.ajax({
 		url: "layDownCard.php?id=" + c,
-		success: function (response) { 
+		success: function (response) {
 
-// theese 2 functions waits for the respoonse in function above to prevent "glitches"
+	// theese 2 functions waits for the respoonse in function above to prevent "glitches"
 			$.getJSON("showHand.php", function(data){
 				$('section.show-the-cards').html("");
 				data.forEach(function(key){
@@ -163,30 +163,28 @@ $("section").click(function(ev){
 					$('section.show-the-cards').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
 				});
 			});
-			
+
 			$.getJSON("updateDiscardPile.php", function(data){
-					$('#btn-discard-pile').html("");
-					var i = 0;
-				data.hand.forEach(function(key){
+				$('#btn-discard-pile').html("");
+				var i = 0;
+				data.forEach(function(key){
 					console.log(key);
-					if(i == 0){
+					if(i === 0){
 						console.log(i);
 						$('#btn-discard-pile').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
 						i++;
 					}
 				});
 			});
-	
-		 }
+
+			$.getJSON("layDownCard.php", function(data){
+				$('section.show-the-cards').html("");
+				data.message.forEach(function(key){
+					console.log(key);
+					$('section.show-the-cards').append(data.message);
+				});
+			});
+			
+		}
 	});
-
 });
-
-
-
-
-
-
-
-
-
