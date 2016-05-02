@@ -96,7 +96,7 @@ $("#btn-start-game").click(function(){
 	$.getJSON("flipFirstCard.php", function(data){
   	$('#btn-discard-pile').html("");
 		data.forEach(function(key){
-			console.log(key);
+			console.log("The first card in discardpile is:", key);
 			$('#btn-discard-pile').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
 		});
 	});
@@ -104,7 +104,7 @@ $("#btn-start-game").click(function(){
 	$.getJSON("showHand.php", function(data){
   	$('section.show-the-cards').html("");
 		data.forEach(function(key){
-			console.log(key);
+			console.log("Card in hand:",key);
 			$('section.show-the-cards').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
 		});
 	});
@@ -148,18 +148,25 @@ $("#btn-reset").click(function(){
 // -------------------------------- on click, lay down card into discard pile
 $("section").click(function(ev){
 	var c =  event.target.id;
-	console.log(c);
-	console.log("Laying down a card from your hand........");
+	console.log("You clicked on the card with id:", c);
 	$.ajax({
 		url: "layDownCard.php?id=" + c,
 		success: function (response) {
 			response = JSON.parse(response);
-			if(response.message === "NO"){
-				alert(response.message);
-			} else if (response.message === "YES") {
+			if(response.message === "EIGHT"){
+				// var answer;
+				// prompt("Choose a suit: spades, diamonds, clubs or hearts", answer);
+				// console.log(answer);
+				// 	$.ajax({
+				// 		url: "eight.php?suitOfEight=" + answer,
+				// 		success: function (response) {	
+				// 			console.log("made it");
+				// 	}
+				// });
+			} else if (response.message === "You can´t play this card") {
 				alert(response.message);
 			} else {
-				alert(response.message);
+				// alert(response.message);
 			}
 
 			// theese 2 functions waits for the respoonse in function above to prevent "glitches"

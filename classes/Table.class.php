@@ -65,7 +65,7 @@
         // IF NONE ABOVE - UNSHIFT TO HAND
       }
       $this->getPlayer($_SESSION["id"])->updateHand($indexCardObj);
-      return "NO";
+      return "You can´t play this card";
     }
 
     public function showDiscardPile() {
