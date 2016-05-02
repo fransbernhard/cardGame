@@ -15,7 +15,7 @@
 
     public function __construct(){
       $this->deck = new Deck;
-      array_push($this->players, new Player("Computer"));
+      // array_push($this->players, new Player("Computer"));
     }
 
     public function registerPlayer($name) {

@@ -10,7 +10,7 @@
   $table = unserialize($str);
 
   $humanPlayer = $table->getPlayer($_SESSION["id"]); //selects the first player in the array
-  header("Content-Type:application/json");
+  // header("Content-Type:application/json");
   $humanPlayer->showHand();
 
   $tableserialized = serialize($table);

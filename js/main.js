@@ -50,18 +50,14 @@ $("#btn-start-game").click(function(){
 			$("#area").append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
 		});
 	});
+});
 
-// hides the button "start game" on click to prevent reloading page by mistake
- 	var button = $("#btn-start-game");
-	button.hide();
 
-//shows all the buttons when game is started
-	var newDeck = $("#btntakecard");
-	var discardPile = $("#btn-discard-pile");
-	newDeck.show();
-	discardPile.show();
+//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+// ----------------------------  ADDING PLAYERS TOP GAME
 
 // makes a prompt so the player can register his/her name.
+$("#btn-join").click(function(){
 	console.log("Adding a new player with a prompt........");
   var greeting = "What is your name?";
 
@@ -84,6 +80,22 @@ $("#btn-start-game").click(function(){
 
 	addingplayerNameToGame();
 
+	// hides the button "start game" on click to prevent reloading page by mistake
+ 	var button = $("#btn-start-game");
+	button.hide();
+
+//shows all the buttons when game is started
+	var newDeck = $("#btntakecard");
+	var discardPile = $("#btn-discard-pile");
+	newDeck.show();
+	discardPile.show();
+
+});
+
+//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+// ---------------------------- DEALS OUT THE CARDS
+
+$("#btn-deal-out").click(function(){
 // Dealing out the cards.
 	console.log("Dealing out 5 cards to each player........");
 	$.ajax({
@@ -109,6 +121,7 @@ $("#btn-start-game").click(function(){
 		});
 	});
 });
+
 
 
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
