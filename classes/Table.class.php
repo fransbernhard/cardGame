@@ -68,13 +68,17 @@
       return "You can´t play this card";
     }
 
-    public function showDiscardPile() {
-      $this->deck->returnDiscardPile();
+    public function getTheDiscardPile() {
+      return $this->deck->getDiscardPile();
     }
 
     public function checkWinner($sessionId){
       // check if this players hand is empty
       // if ($this->)
+    }
+
+    public function checkTurn() {
+
     }
 
     //::::::::::::::1. HAND IS EMPTY PLAYER WON

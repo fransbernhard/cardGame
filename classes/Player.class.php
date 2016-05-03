@@ -22,6 +22,7 @@
     }
 
     public function takeCardFromDeck($deck) {
+      
       array_push($this->hand, $deck->popCard());
     }
 

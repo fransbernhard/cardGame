@@ -36,6 +36,10 @@
       return array_pop($this->deck);
     }
 
+    public function getDiscardPile(){
+      return $this->discardPile;
+    }
+
     public function returnDiscardPile() {
       echo json_encode($this->discardPile);
     }

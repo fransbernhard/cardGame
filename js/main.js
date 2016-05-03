@@ -214,3 +214,15 @@ $("section").click(function(ev){
 		}
 	});
 });
+
+
+$("#test").click(function(){
+	$.getJSON("takeCard.php"), function(data){
+		data.forEach(function(key){
+			console.log(key);			
+		});
+	}
+});
+
+
+
