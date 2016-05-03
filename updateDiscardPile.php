@@ -9,7 +9,7 @@ spl_autoload_register(function ($className) {
   $str = file_get_contents("game.dat");
   $table = unserialize($str);
 
-  $table->showDiscardPile();
+  $table->returnJsonDiscardPile();
   
   
   $tableserialized = serialize($table);

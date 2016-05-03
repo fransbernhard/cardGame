@@ -72,6 +72,10 @@
       return $this->deck->getDiscardPile();
     }
 
+    public function returnJsonDiscardPile() {
+      $this->deck->returnDiscardPile();
+    }
+
     public function checkWinner($sessionId){
       // check if this players hand is empty
       // if ($this->)

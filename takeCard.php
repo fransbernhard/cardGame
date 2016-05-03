@@ -8,6 +8,7 @@
 
   $str = file_get_contents("game.dat");
   $table = unserialize($str);
+  
 
   $humanPlayer = $table->getPlayer($_SESSION["id"]); //selects the first player in the array
 
@@ -30,6 +31,7 @@
   if ($allowToTake === true) {
     $humanPlayer->takeCardFromDeck($table->getDeck());
     $humanPlayer->showHand();
+
 
   } else {
     echo json_encode();
