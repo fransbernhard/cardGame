@@ -21,7 +21,8 @@
     if ($res['message'] === "YES" || $res['message'] === "EIGHT"){
       $table->checkWinner($_SESSION["id"]);
     }
-    echo json_encode($res);
+    // echo json_encode($res);
+    return $res;
   }
 
   $tableserialized = serialize($table);

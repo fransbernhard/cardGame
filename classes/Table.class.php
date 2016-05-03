@@ -40,10 +40,11 @@
     public function flipFirstCard(){
       array_push($this->deck->discardPile, $this->deck->popCard());
       echo json_encode($this->deck->discardPile);
+      // return $this->deck->discardPile;
     }
 
     public function getPlayer($indexNumber){
-      return $this -> players[$indexNumber];
+      return $this->players[$indexNumber];
     }
 
     public function getDeck(){
@@ -52,14 +53,14 @@
 
     public function laydownInDiscardPile($indexCardObj){
       // IF CARD IS SAME FACE OR SAME SUIT - UNSHIFT TO DISCARDPILE
-      if($indexCardObj->suit == $this->deck->discardPile[0]->suit||
-        $indexCardObj->face == $this->deck->discardPile[0]->face){
+      if($indexCardObj->getSuit() == $this->deck->discardPile[0]->getSuit()||
+        $indexCardObj->getFace() == $this->deck->discardPile[0]->getFace()){
         array_unshift($this->deck->discardPile, $indexCardObj);
-        // echo json_encode($this->deck->discardPile);
+        echo json_encode($this->deck->discardPile);
         return "YES";
 
       // IF CARD IS EIGHT - UNSHIFT TO DISCARDPILE
-      } else if ($indexCardObj->point == 50){
+      } else if ($indexCardObj->getPoint() == 50){
         array_unshift($this->deck->discardPile, $indexCardObj);
         return "EIGHT";
         // IF NONE ABOVE - UNSHIFT TO HAND

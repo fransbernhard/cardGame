@@ -13,7 +13,7 @@
 
     public function takeCardFromHand($playedCard){       // should be array search to get index then slice or splice
       foreach ($this->hand as $index => $card) {
-        if ($card->id == $playedCard) {
+        if ($card->getId() == $playedCard) {
            $returnedCard = array_splice($this->hand, $index, 1);
            return $returnedCard[0];
         }

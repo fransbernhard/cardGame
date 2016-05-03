@@ -13,7 +13,4 @@
   $tableserialized = serialize($table);
   file_put_contents("game.dat", $tableserialized);
 
-  $str = file_get_contents("game.dat");
-  $table = unserialize($str);
-
 ?>

@@ -111,6 +111,7 @@ $("#btn-deal-out").click(function(){
 	$.getJSON("flipFirstCard.php", function(data){
   	$('#btn-discard-pile').html("");
 		data.forEach(function(key){
+			console.log(key.filePath);
 			console.log("The first card in discardpile is:", key);
 			$('#btn-discard-pile').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
 		});
@@ -180,7 +181,7 @@ $("section").click(function(ev){
 
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 // ---------------------------- updating the discardpile to all players
-setInterval(function(){
+// setInterval(function(){
 
 $.getJSON("updateDiscardPile.php", function(data){
 				$('#btn-discard-pile').html("");
@@ -196,6 +197,6 @@ $.getJSON("updateDiscardPile.php", function(data){
 			});
 
 
-}, 500);
+// }, 500);
 
 

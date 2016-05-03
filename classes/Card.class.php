@@ -1,12 +1,12 @@
 <?php
 
-  class Card {
+  class Card implements JsonSerializable {
 
-    public $point;
-    public $face;
-    public $suit;
-    public $filePath;
-    public $id;
+    private $point;
+    private $face;
+    private $suit;
+    private $filePath;
+    private $id;
 
     function __construct($face, $suit, $id) {
 
@@ -69,6 +69,33 @@
           break;
       }
     }
+
+    function jsonSerialize(){
+      $v["id"] = $this->id;
+      $v["suit"] = $this->suit;
+      $v["face"] = $this->face;
+      $v["point"] = $this->point;
+      $v["filePath"] = $this->filePath;
+      return $v;
+    }
+
+    function getId(){
+      return $this->id;
+    }
+
+    function getSuit(){
+      return $this->suit;
+    }
+
+    function getFace(){
+      return $this->face;
+    }
+
+    function getPoint(){
+      return $this->point;
+    }
+
+
   }
 
 ?>

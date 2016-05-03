@@ -41,7 +41,8 @@
     }
 
     public function returnDiscardPile() {
-      echo json_encode($this->discardPile);
+      // echo json_encode($this->discardPile);
+      return $this->discardPile;
     }
   }
 

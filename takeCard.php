@@ -16,14 +16,14 @@
 
   $allowToTake= true;
 
-  error_log(json_encode($discardPile[0]));
+  // error_log(json_encode($discardPile[0]));
 
   foreach ($humanPlayer->hand as $card) {
 
-    error_log(json_encode($card));
+    // error_log(json_encode($card));
     
-    if($card->suit == $discardPile[0]->suit || $card->face == $discardPile[0]->face || $card->point == 50) {
-      error_log("false god dammit");
+    if($card->getSuit() == $discardPile[0]->getSuit() || $card->getFace() == $discardPile[0]->getFace() || $card->getPoint() == 50) {
+      // error_log("false god dammit");
       $allowToTake = false;
     }
   }
