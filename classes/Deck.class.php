@@ -1,6 +1,6 @@
 <?php
 
-  session_start();
+  @session_start();
 
   class Deck {
 
@@ -9,7 +9,6 @@
     public $deck = [];
     public $numberOfCards = 5;
     public $discardPile = [];
-    
 
     function __construct() {
       $this->suit = ["spades", "hearts", "clubs", "diamonds"];
@@ -36,13 +35,14 @@
       return array_pop($this->deck);
     }
 
+    //For php
     public function getDiscardPile(){
       return $this->discardPile;
     }
 
+    //For JavaScript
     public function returnDiscardPile() {
-      // echo json_encode($this->discardPile);
-      return $this->discardPile;
+      echo json_encode($this->discardPile);
     }
   }
 

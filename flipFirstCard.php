@@ -9,8 +9,6 @@
   $str = file_get_contents("game.dat");
   $table = unserialize($str);
 
-  // header('Content-Type:application/json');
-
   $table->flipFirstCard();
 
   $tableserialized = serialize($table);

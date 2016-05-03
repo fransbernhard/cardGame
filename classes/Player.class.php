@@ -1,6 +1,6 @@
 <?php
 
-  session_start();
+  @session_start();
 
   class Player {
 
@@ -11,18 +11,19 @@
       $this->name = $name;
     }
 
-    public function takeCardFromHand($playedCard){       // should be array search to get index then slice or splice
-      foreach ($this->hand as $index => $card) {
-        if ($card->getId() == $playedCard) {
-           $returnedCard = array_splice($this->hand, $index, 1);
+    public function takeCardFromHand($playedCardID){
+      $idx = 0;
+      foreach ($this->hand as $card) {
+        if ($card->getId() == $playedCardID) {
+           $returnedCard = array_splice($this->hand, $idx, 1);
            return $returnedCard[0];
         }
+        $idx++;
       }
       return null;
     }
 
     public function takeCardFromDeck($deck) {
-      
       array_push($this->hand, $deck->popCard());
     }
 

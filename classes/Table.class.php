@@ -1,6 +1,6 @@
 <?php
 
-  session_start();
+  @session_start();
 
   spl_autoload_register(function ($className) {
       include 'classes/' . $className . '.class.php';
@@ -54,9 +54,9 @@
     public function laydownInDiscardPile($indexCardObj){
       // IF CARD IS SAME FACE OR SAME SUIT - UNSHIFT TO DISCARDPILE
       if($indexCardObj->getSuit() == $this->deck->discardPile[0]->getSuit()||
-        $indexCardObj->getFace() == $this->deck->discardPile[0]->getFace()){
+        $indexCardObj->getFace() == $this->deck->discardPile[0]->getFace()) {
         array_unshift($this->deck->discardPile, $indexCardObj);
-        echo json_encode($this->deck->discardPile);
+        // echo json_encode($this->deck->discardPile);
         return "YES";
 
       // IF CARD IS EIGHT - UNSHIFT TO DISCARDPILE
@@ -85,39 +85,6 @@
     public function checkTurn() {
 
     }
-
-    //::::::::::::::1. HAND IS EMPTY PLAYER WON
-    //  if ($this->hand >= 0){ //1. Hand is empty - player won
-    //    echo "Player Won!"
-    //  }
-
-    //:::::::::::::2. TAKE NEW CARD
-    // else if ($card != $suit->topCard || $face->topCard || "8"->topCard) {
-    //    echo "Take New Card";
-    //  }
-
-    //:::::::::::::3. LAY DOWN 8 AND CHOOSE SUIT
-    // else if ($card == "8") {
-    //    array_splice($this->discardPile, $this->hand)
-    //    return $suit;
-    //  }
-
-    //::::::::::::4. SAME SUIT
-    // else if ($card == $suit->topCard){
-
-          //::::::::::::::5. DOUBLE CARD DRAW
-    //    if ($card == $face->hand){
-    //      array_splice($this->discardPile, $this->hand) //with the lowest index, sort desc
-    //    }
-
-    //    array_splice($this->discardPile, $this->hand)
-    // }
-
-    //::::::::::::::6. SAME FACE
-    // else if ($card == $face->topCard){
-    //   array_splice($this->discardPile, $this->hand)
-    // }
-
   }
 
 ?>

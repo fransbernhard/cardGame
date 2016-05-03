@@ -107,7 +107,7 @@ $("#btn-deal-out").click(function(){
 	var dealoutbutton = $("#btn-deal-out");
 	dealoutbutton.hide();
 
-	//shows the 
+	//shows the
 	$.getJSON("flipFirstCard.php", function(data){
   	$('#btn-discard-pile').html("");
 		data.forEach(function(key){
@@ -129,7 +129,7 @@ setInterval(function(){
 		});
 	});
 
-}, 500);
+}, 3000);
 
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 // ---------------------------- clickfunction take card from deck
@@ -139,6 +139,7 @@ $('#btntakecard').click(function(){
 		url: "takeCard.php",
 		success: function (response) { //response is value returned from php
 	  	// $('section').empty().append(response); //appends the respons to section and clears it on every click
+	  	console.log("hejjjeeee", response);
 	  }
 	});
 });
@@ -166,7 +167,7 @@ $("section").click(function(ev){
 				// console.log(answer);
 				// 	$.ajax({
 				// 		url: "eight.php?suitOfEight=" + answer,
-				// 		success: function (response) {	
+				// 		success: function (response) {
 				// 			console.log("made it");
 				// 	}
 				// });
@@ -181,7 +182,7 @@ $("section").click(function(ev){
 
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 // ---------------------------- updating the discardpile to all players
-// setInterval(function(){
+setInterval(function(){
 
 $.getJSON("updateDiscardPile.php", function(data){
 				$('#btn-discard-pile').html("");
@@ -197,6 +198,6 @@ $.getJSON("updateDiscardPile.php", function(data){
 			});
 
 
-// }, 500);
+}, 500);
 
 

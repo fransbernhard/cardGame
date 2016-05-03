@@ -8,7 +8,7 @@
 
   $str = file_get_contents("game.dat");
   $table = unserialize($str);
-  
+
 
   $humanPlayer = $table->getPlayer($_SESSION["id"]); //selects the first player in the array
 
@@ -21,9 +21,9 @@
   foreach ($humanPlayer->hand as $card) {
 
     // error_log(json_encode($card));
-    
+
     if($card->getSuit() == $discardPile[0]->getSuit() || $card->getFace() == $discardPile[0]->getFace() || $card->getPoint() == 50) {
-      // error_log("false god dammit");
+      error_log("false god dammit");
       $allowToTake = false;
     }
   }
@@ -31,22 +31,9 @@
   if ($allowToTake === true) {
     $humanPlayer->takeCardFromDeck($table->getDeck());
     $humanPlayer->showHand();
-
-
   } else {
     echo json_encode();
   }
-
-
-
-
-
-    
-
-
-   // takes a card from the deck and puts it in it´s own hand
-
-    
 
   $tableserialized = serialize($table);
   file_put_contents("game.dat", $tableserialized);

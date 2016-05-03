@@ -6,13 +6,13 @@
 
   session_start();
 
-  $playedCard = $_GET["id"];
+  $playedCardID = $_GET["id"];
 
   $str = file_get_contents("game.dat");
   $table = unserialize($str);
   $humanPlayer = $table->getPlayer($_SESSION["id"]);
 
-  $indexCardObj = $humanPlayer -> takeCardFromHand($playedCard);
+  $indexCardObj = $humanPlayer -> takeCardFromHand($playedCardID);
 
   if ($indexCardObj == null) { //INVALID CARD (CLICK)
     http_response_code(400);
@@ -21,8 +21,8 @@
     if ($res['message'] === "YES" || $res['message'] === "EIGHT"){
       $table->checkWinner($_SESSION["id"]);
     }
-    // echo json_encode($res);
-    return $res;
+    echo json_encode($res);
+    // return $res;
   }
 
   $tableserialized = serialize($table);
