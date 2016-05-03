@@ -35,7 +35,6 @@ deckOfCards.hide();
 var discardPile = $("#btn-discard-pile");
 discardPile.hide();
 
-
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //----------------------------- STARTS THE GAME ----------------------
 
@@ -52,9 +51,8 @@ $("#btn-start-game").click(function(){
 	});
 });
 
-
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-// ----------------------------  ADDING PLAYERS TOP GAME
+// ----------------------------  ADDING PLAYERS TO GAME
 
 // makes a prompt so the player can register his/her name.
 $("#btn-join").click(function(){
@@ -80,6 +78,10 @@ $("#btn-join").click(function(){
 
 	addingplayerNameToGame();
 
+	// hides the join-button after click
+	var joinbutton = $("#btn-join");
+	joinbutton.hide();
+
 	// hides the button "start game" on click to prevent reloading page by mistake
  	var button = $("#btn-start-game");
 	button.hide();
@@ -94,17 +96,18 @@ $("#btn-join").click(function(){
 
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 // ---------------------------- DEALS OUT THE CARDS
-
 $("#btn-deal-out").click(function(){
 // Dealing out the cards.
 	console.log("Dealing out 5 cards to each player........");
 	$.ajax({
 			url: "dealOut.php",
-			// success: function (response) { //response is value returned from php
-		 	// $('section').empty().append(response); //appends the respons to section and clears it on every click
-	  // }
 	});
 
+	//hides the deal-out-button after click
+	var dealoutbutton = $("#btn-deal-out");
+	dealoutbutton.hide();
+
+	//shows the 
 	$.getJSON("flipFirstCard.php", function(data){
   	$('#btn-discard-pile').html("");
 		data.forEach(function(key){
@@ -112,7 +115,11 @@ $("#btn-deal-out").click(function(){
 			$('#btn-discard-pile').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
 		});
 	});
+});
 
+//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+// ---------------------------- updating the hand to all players
+setInterval(function(){
 	$.getJSON("showHand.php", function(data){
   	$('section.show-the-cards').html("");
 		data.forEach(function(key){
@@ -120,13 +127,11 @@ $("#btn-deal-out").click(function(){
 			$('section.show-the-cards').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
 		});
 	});
-});
 
-
+}, 500);
 
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 // ---------------------------- clickfunction take card from deck
-
 $('#btntakecard').click(function(){
 	console.log("Taking a card from the deck........");
 	$.ajax({
@@ -135,27 +140,15 @@ $('#btntakecard').click(function(){
 	  	// $('section').empty().append(response); //appends the respons to section and clears it on every click
 	  }
 	});
-
-	$.getJSON("showHand.php", function(data){
-		$('section.show-the-cards').html("");
-		data.forEach(function(key){
-			console.log(key);
-			$('section.show-the-cards').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
-		});
-	});
-
 });
 
-
-
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-// ------------------------------ a simple reset-function with a confirm....
+// ------------------------------ a simple reset-function on bottom of page with a confirm....
 $("#btn-reset").click(function(){
 	if (confirm('Are U sure you want to reset the game and loose all data?')) {
   	location.reload(true);
   }
 });
-
 
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 // -------------------------------- on click, lay down card into discard pile
@@ -181,17 +174,15 @@ $("section").click(function(ev){
 			} else {
 				// alert(response.message);
 			}
+		}
+	});
+});
 
-			// theese 2 functions waits for the respoonse in function above to prevent "glitches"
-			$.getJSON("showHand.php", function(data){
-				$('section.show-the-cards').html("");
-				data.forEach(function(key){
-					console.log(key);
-					$('section.show-the-cards').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
-				});
-			});
+//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+// ---------------------------- updating the discardpile to all players
+setInterval(function(){
 
-			$.getJSON("updateDiscardPile.php", function(data){
+$.getJSON("updateDiscardPile.php", function(data){
 				$('#btn-discard-pile').html("");
 				var i = 0;
 				data.forEach(function(key){
@@ -204,25 +195,7 @@ $("section").click(function(ev){
 				});
 			});
 
-			// $.getJSON("layDownCard.php", function(data){
-			// 	$('section.show-the-cards').html("");
-			// 	data.message.forEach(function(key){
-			// 		console.log(key);
-			// 		$('section.show-the-cards').append(data.message);
-			// 	});
-			// });
-		}
-	});
-});
 
-
-$("#test").click(function(){
-	$.getJSON("takeCard.php"), function(data){
-		data.forEach(function(key){
-			console.log(key);			
-		});
-	}
-});
-
+}, 500);
 
 
