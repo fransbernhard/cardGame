@@ -104,7 +104,34 @@ $("#btn-join").click(function(){
 
 });
 
+//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+// ---------------------------- DEALS OUT THE CARDS
+$("#btn-deal-out").click(function(){
+// Dealing out the cards.
+	console.log("Dealing out 5 cards to each player........");
+	$.ajax({
+			url: "dealOut.php",
+	});
 
+	//hides the deal-out-button after click
+	
+
+	//shows the
+	$.getJSON("flipFirstCard.php", function(data){
+  	$('#btn-discard-pile').html("");
+
+  // 	var dealoutbutton = $("#btn-deal-out");
+		// dealoutbutton.hide();
+		data.forEach(function(key){
+			console.log(key.filePath);
+			console.log("The first card in discardpile is:", key);
+			appendCardElement("#btn-discard-pile", key);
+
+
+			// $('#btn-discard-pile').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
+		});
+	});
+});
 
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 // ---------------------------- updating the hand to all players
@@ -226,36 +253,14 @@ setInterval(function(){
 
 		});
 
+		$("#btn-deal-out").click(function(){
+			var dealoutbutton = $("#btn-deal-out");
+			dealoutbutton.hide();
+
+		});
 				
 
 	});
-
-	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	// ---------------------------- DEALS OUT THE CARDS
-
-
-	$("#btn-deal-out").click(function(){
-// Dealing out the cards.
-	console.log("Dealing out 5 cards to each player........");
-	$.ajax({
-			url: "dealOut.php",
-	});
-
-	//hides the deal-out-button after click
-	var dealoutbutton = $("#btn-deal-out");
-	dealoutbutton.hide();
-
-	//shows the
-	$.getJSON("flipFirstCard.php", function(data){
-  	$('#btn-discard-pile').html("");
-		data.forEach(function(key){
-			console.log(key.filePath);
-			console.log("The first card in discardpile is:", key);
-			appendCardElement("#btn-discard-pile", key);
-			// $('#btn-discard-pile').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
-		});
-	});
-});
 
 
 }, 1000);
