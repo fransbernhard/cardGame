@@ -35,6 +35,13 @@ deckOfCards.hide();
 var discardPile = $("#btn-discard-pile");
 discardPile.hide();
 
+function appendCardElement(element, key) {
+	$(element).append('<img class="cardimg" src="' + key.filePath + 
+		'" id="' + key.id + 
+		'" data-point="' + key.point + 
+		'" ></img>');
+}
+
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //----------------------------- STARTS THE GAME ----------------------
 
@@ -46,7 +53,8 @@ $("#btn-start-game").click(function(){
   	$('#area').html("");
 		data.forEach(function(key){
 			console.log(key);
-			$("#area").append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
+			// $("#area").append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
+			appendCardElement("#area", key);
 		});
 	});
 });
@@ -64,6 +72,8 @@ $("#btn-join").click(function(){
 		console.log("Shows a prompt to insert playername.");
 		return prompt(greeting, p);
 	}
+
+
 
 	function addingplayerNameToGame() {
    	var p = insertPlayerName();
@@ -113,7 +123,8 @@ $("#btn-deal-out").click(function(){
 		data.forEach(function(key){
 			console.log(key.filePath);
 			console.log("The first card in discardpile is:", key);
-			$('#btn-discard-pile').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
+			appendCardElement("#btn-discard-pile", key);
+			// $('#btn-discard-pile').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
 		});
 	});
 });
@@ -125,7 +136,8 @@ setInterval(function(){
   	$('section.show-the-cards').html("");
 		data.forEach(function(key){
 			console.log("Card in hand:",key);
-			$('section.show-the-cards').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
+			appendCardElement("section.show-the-cards", key);
+			// $('section.show-the-cards').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
 		});
 	});
 
@@ -157,25 +169,33 @@ $("#btn-reset").click(function(){
 $("section").click(function(ev){
 	var c =  event.target.id;
 	console.log("You clicked on the card with id:", c);
+	
+	var suit;
+	var queryParams = "?id=" + c;
+
+	if(event.target.dataset.point == 50){
+		suit = prompt("choose your suit", "");
+	}
+
+	if(suit !== undefined) {
+		queryParams += "&suit=" + suit;
+	}
+
+
+
+
 	$.ajax({
-		url: "layDownCard.php?id=" + c,
+		url: "layDownCard.php" + queryParams,
 		success: function (response) {
 			response = JSON.parse(response);
-			if(response.message === "EIGHT"){
-				// var answer;
-				// prompt("Choose a suit: spades, diamonds, clubs or hearts", answer);
-				// console.log(answer);
-				// 	$.ajax({
-				// 		url: "eight.php?suitOfEight=" + answer,
-				// 		success: function (response) {
-				// 			console.log("made it");
-				// 	}
-				// });
-			} else if (response.message === "You can´t play this card") {
-				alert(response.message);
-			} else {
-				// alert(response.message);
-			}
+			// if(response.message === "EIGHT"){
+				
+		
+			// } else if (response.message === "You can´t play this card") {
+			// 	alert(response.message);
+			// } else {
+			// 	// alert(response.message);
+			// }
 		}
 	});
 });
@@ -191,7 +211,8 @@ $.getJSON("updateDiscardPile.php", function(data){
 					console.log(key);
 					if(i === 0){
 						console.log(i);
-						$('#btn-discard-pile').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
+						appendCardElement("#btn-discard-pile", key);
+						// $('#btn-discard-pile').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
 						i++;
 					}
 				});
