@@ -221,19 +221,18 @@ $("section").click(function(ev){
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 // ---------------------------- updating the discardpile to all players
 setInterval(function(){
-
-$.getJSON("updateTableState.php", function(data){
-				$('#btn-discard-pile').html("");
-				var i = 0;
-				data.discardPile.forEach(function(key){
-					console.log(key);
-					if(i === 0){
-						console.log(i);
-						appendCardElement("#btn-discard-pile", key);
-						// $('#btn-discard-pile').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
-						i++;
-					}
-				});
+	$.getJSON("updateTableState.php", function(data){
+		$('#btn-discard-pile').html("");
+		var i = 0;
+		data.discardPile.forEach(function(key){
+			console.log(key);
+			if(i === 0){
+				console.log(i);
+				appendCardElement("#btn-discard-pile", key);
+				// $('#btn-discard-pile').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
+				i++;
+			}
+		});
 			// 	if(data.suit[0]== "spades"){
 			// 		$("#playedsuit").append("spades");
 			// 	}else if(data.suit[0]== "hearts"){
@@ -244,7 +243,7 @@ $.getJSON("updateTableState.php", function(data){
 			// 		$("#playedsuit").append("diamonds");
 			// 	}
 
-			// });
+	});
 
 
 }, 1000);

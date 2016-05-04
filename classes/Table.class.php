@@ -90,17 +90,17 @@
       return $this->deck->getDiscardPile();
     }
 
-    public function checkWinner(){
-      //check if this players hand is empty
-      foreach ($this->players as $player) {
-        if ($player->hand == []){
-          return "You won the game!!!";
-        } else {
-          return "NOT WINNER";
-        }
-      }
+    // public function checkWinner(){
+    //   //check if this players hand is empty
+    //   foreach ($this->players as $player) {
+    //     if ($player->hand == []){
+    //       return "You won the game!!!";
+    //     } else {
+    //       return "NOT WINNER";
+    //     }
+    //   }
       
-    }
+    // }
 
     public function setNewSuit($suit) {
       $this->fakeSuit = $suit;
