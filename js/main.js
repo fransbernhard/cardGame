@@ -175,13 +175,15 @@ $("section").click(function(ev){
 
 	if(event.target.dataset.point == 50){
 		suit = prompt("choose your suit", "");
-		$("#playedsuit").append(suit);
+		// $("#playedsuit").append(suit);
 	}
 
 	if(suit !== undefined) {
 		queryParams += "&suit=" + suit;
 
 	}
+
+	$("#playedsuit").html("");
 
 
 
@@ -232,16 +234,21 @@ setInterval(function(){
 				// $('#btn-discard-pile').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
 				i++;
 			}
+			
+			$("#playedsuit").html("");
+			
+			if(data.suit[0] == "s"){
+				$("#playedsuit").append("Play a spade");
+			}else if(data.suit[0] == "h"){
+				$("#playedsuit").append("Play a heart");
+			}else if(data.suit[0] == "c"){
+				$("#playedsuit").append("Play a club");
+			}else if(data.suit[0] == "d" ){
+				$("#playedsuit").append("Play a diamond");
+			}
+
 		});
-			// 	if(data.suit[0]== "spades"){
-			// 		$("#playedsuit").append("spades");
-			// 	}else if(data.suit[0]== "hearts"){
-			// 		$("#playedsuit").append("hearts");
-			// 	}else if(data.suit[0]== "clubs"){
-			// 		$("#playedsuit").append("clubs");
-			// 	}else if(data.suit[0]== "diamonds"){
-			// 		$("#playedsuit").append("diamonds");
-			// 	}
+				
 
 	});
 
