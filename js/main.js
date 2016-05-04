@@ -120,8 +120,8 @@ $("#btn-deal-out").click(function(){
 	$.getJSON("flipFirstCard.php", function(data){
   	$('#btn-discard-pile').html("");
 
-  // 	var dealoutbutton = $("#btn-deal-out");
-		// dealoutbutton.hide();
+  	var dealoutbutton = $("#btn-deal-out");
+		dealoutbutton.hide();
 		data.forEach(function(key){
 			console.log(key.filePath);
 			console.log("The first card in discardpile is:", key);
@@ -253,11 +253,7 @@ setInterval(function(){
 
 		});
 
-		$("#btn-deal-out").click(function(){
-			var dealoutbutton = $("#btn-deal-out");
-			dealoutbutton.hide();
 
-		});
 				
 
 	});
