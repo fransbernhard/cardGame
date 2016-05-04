@@ -12,6 +12,7 @@
     private $maxPlayers = 6;
     public $numberOfCards = 5;
     private $deck;
+    public $fakeSuit = null;
 
     public function __construct(){
       $this->deck = new Deck;
@@ -52,18 +53,30 @@
     }
 
     public function laydownInDiscardPile($indexCardObj){
-      // IF CARD IS SAME FACE OR SAME SUIT - UNSHIFT TO DISCARDPILE
-      if($indexCardObj->getSuit() == $this->deck->discardPile[0]->getSuit()||
-        $indexCardObj->getFace() == $this->deck->discardPile[0]->getFace()) {
-        array_unshift($this->deck->discardPile, $indexCardObj);
-        // echo json_encode($this->deck->discardPile);
-        return "YES";
+      if ($indexCardObj->getPoint() == 50){
+          array_unshift($this->deck->discardPile, $indexCardObj);
+          return "EIGHT";
+          // IF NONE ABOVE - UNSHIFT TO HAND
+      }else if($this->fakeSuit != null) {
+        if($this->fakeSuit == $indexCardObj->getSuit()){
+          array_unshift($this->deck->discardPile, $indexCardObj);
+          $this->fakeSuit = null;
+          return "YES";
+        }
+        // echo php_error(json_encode($this->deck->discardPile[0]->getSuit())); 
+      }else{
 
-      // IF CARD IS EIGHT - UNSHIFT TO DISCARDPILE
-      } else if ($indexCardObj->getPoint() == 50){
-        array_unshift($this->deck->discardPile, $indexCardObj);
-        return "EIGHT";
-        // IF NONE ABOVE - UNSHIFT TO HAND
+      // IF CARD IS SAME FACE OR SAME SUIT - UNSHIFT TO DISCARDPILE
+        if($indexCardObj->getSuit() == $this->deck->discardPile[0]->getSuit()||
+          $indexCardObj->getFace() == $this->deck->discardPile[0]->getFace()) {
+          array_unshift($this->deck->discardPile, $indexCardObj);
+          $this->fakeSuit = null;
+          // echo json_encode($this->deck->discardPile);
+          return "YES";
+
+        // IF CARD IS EIGHT - UNSHIFT TO DISCARDPILE
+        } 
+        
       }
       $this->getPlayer($_SESSION["id"])->updateHand($indexCardObj);
       return "You can´t play this card";
@@ -73,8 +86,8 @@
       return $this->deck->getDiscardPile();
     }
 
-    public function returnJsonDiscardPile() {
-      $this->deck->returnDiscardPile();
+    public function getDiscardPile() {
+      return $this->deck->getDiscardPile();
     }
 
     public function checkWinner($sessionId){
@@ -82,8 +95,16 @@
       // if ($this->)
     }
 
+    public function setNewSuit($suit) {
+      $this->fakeSuit = $suit;
+    }
+
     public function checkTurn() {
 
+    }
+
+    public function getFakeSuit() {
+      return $this->fakeSuit;
     }
   }
 

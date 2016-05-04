@@ -41,9 +41,9 @@
     }
 
     //For JavaScript
-    public function returnDiscardPile() {
-      echo json_encode($this->discardPile);
-    }
+    // public function returnDiscardPile() {
+    //   echo json_encode($this->discardPile);
+    // }
   }
 
 ?>

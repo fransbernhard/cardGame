@@ -79,6 +79,9 @@ spl_autoload_register(function ($className) {
 			<button id="btn-reset">Reset the game and start over</button>
 
 		</div>
+		<footer>
+			<h1 id="playedsuit"></h1>
+		</footer>
 
 
 		<!--javascript libraries -->

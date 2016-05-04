@@ -175,10 +175,12 @@ $("section").click(function(ev){
 
 	if(event.target.dataset.point == 50){
 		suit = prompt("choose your suit", "");
+		$("#playedsuit").append(suit);
 	}
 
 	if(suit !== undefined) {
 		queryParams += "&suit=" + suit;
+
 	}
 
 
@@ -204,10 +206,10 @@ $("section").click(function(ev){
 // ---------------------------- updating the discardpile to all players
 setInterval(function(){
 
-$.getJSON("updateDiscardPile.php", function(data){
+$.getJSON("updateTableState.php", function(data){
 				$('#btn-discard-pile').html("");
 				var i = 0;
-				data.forEach(function(key){
+				data.discardPile.forEach(function(key){
 					console.log(key);
 					if(i === 0){
 						console.log(i);
@@ -216,7 +218,17 @@ $.getJSON("updateDiscardPile.php", function(data){
 						i++;
 					}
 				});
-			});
+			// 	if(data.suit[0]== "spades"){
+			// 		$("#playedsuit").append("spades");
+			// 	}else if(data.suit[0]== "hearts"){
+			// 		$("#playedsuit").append("hearts");
+			// 	}else if(data.suit[0]== "clubs"){
+			// 		$("#playedsuit").append("clubs");
+			// 	}else if(data.suit[0]== "diamonds"){
+			// 		$("#playedsuit").append("diamonds");
+			// 	}
+
+			// });
 
 
 }, 500);

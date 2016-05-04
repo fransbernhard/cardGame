@@ -15,6 +15,11 @@
 
   $indexCardObj = $humanPlayer -> takeCardFromHand($playedCardID);
 
+
+  if(isset($suit) == true) {
+   $table->setNewSuit($suit);
+  }
+
   if ($indexCardObj == null) { //INVALID CARD (CLICK)
     http_response_code(400);
   } else {
@@ -23,9 +28,7 @@
       $table->checkWinner($_SESSION["id"]);
     }
 
-    if(isset($suit) == true && $res['message'] === 'EIGHT') {
-      //$table->setNewSuit($suit);
-    }
+
 
 
     echo json_encode($res);

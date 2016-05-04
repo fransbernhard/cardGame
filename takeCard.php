@@ -14,26 +14,12 @@
 
   $discardPile = $table->getTheDiscardPile();
 
-  $allowToTake= true;
 
-  // error_log(json_encode($discardPile[0]));
 
-  foreach ($humanPlayer->hand as $card) {
+ 
+  $humanPlayer->takeCardFromDeck($table->getDeck());
+  $humanPlayer->showHand();
 
-    // error_log(json_encode($card));
-
-    if($card->getSuit() == $discardPile[0]->getSuit() || $card->getFace() == $discardPile[0]->getFace() || $card->getPoint() == 50) {
-      error_log("false god dammit");
-      $allowToTake = false;
-    }
-  }
-
-  if ($allowToTake === true) {
-    $humanPlayer->takeCardFromDeck($table->getDeck());
-    $humanPlayer->showHand();
-  } else {
-    echo json_encode();
-  }
 
   $tableserialized = serialize($table);
   file_put_contents("game.dat", $tableserialized);
