@@ -141,7 +141,7 @@ setInterval(function(){
 		});
 	});
 
-}, 3000);
+}, 1000);
 
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 // ---------------------------- clickfunction take card from deck
@@ -198,7 +198,23 @@ $("section").click(function(ev){
 			// }
 		}
 	});
+
+	$.ajax({
+		url: "checkWinner.php",
+		success: function (response) { response = JSON.parse(response);
+	  	if(response.message === "You won the game!!!"){
+	  		alert(response.message);
+	  	} 
+	  }
+	});
+
+
 });
+
+
+
+
+
 
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 // ---------------------------- updating the discardpile to all players
@@ -219,6 +235,6 @@ $.getJSON("updateDiscardPile.php", function(data){
 			});
 
 
-}, 500);
+}, 1000);
 
 
