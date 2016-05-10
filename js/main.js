@@ -36,9 +36,9 @@ var discardPile = $("#btn-discard-pile");
 discardPile.hide();
 
 function appendCardElement(element, key) {
-	$(element).append('<img class="cardimg" src="' + key.filePath + 
-		'" id="' + key.id + 
-		'" data-point="' + key.point + 
+	$(element).append('<img class="cardimg" src="' + key.filePath +
+		'" id="' + key.id +
+		'" data-point="' + key.point +
 		'" ></img>');
 }
 
@@ -46,8 +46,8 @@ function appendCardElement(element, key) {
 //----------------------------- STARTS THE GAME ----------------------
 
 // CLICK ON THE STARTBUTTON INITIATES THE GAME
-$("#btn-start-game").click(function(){
-
+// $("#btn-start-game").click(function(){
+	$(document).ready(function (){
 	console.log("Now creating new table, new deck and a new game.....");
   $.getJSON("cards.php", function(data){
   	$('#area').html("");
@@ -114,14 +114,14 @@ $("#btn-deal-out").click(function(){
 	});
 
 	//hides the deal-out-button after click
-	
+
 
 	//shows the
 	$.getJSON("flipFirstCard.php", function(data){
   	$('#btn-discard-pile').html("");
 
-  	var dealoutbutton = $("#btn-deal-out");
-		dealoutbutton.hide();
+  // 	var dealoutbutton = $("#btn-deal-out");
+		// dealoutbutton.hide();
 		data.forEach(function(key){
 			console.log(key.filePath);
 			console.log("The first card in discardpile is:", key);
@@ -139,7 +139,7 @@ setInterval(function(){
 	$.getJSON("showHand.php", function(data){
   	$('section.show-the-cards').html("");
 		data.forEach(function(key){
-			console.log("Card in hand:",key);
+			// console.log("Card in hand:",key);
 			appendCardElement("section.show-the-cards", key);
 			// $('section.show-the-cards').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
 		});
@@ -173,7 +173,7 @@ $("#btn-reset").click(function(){
 $("section").click(function(ev){
 	var c =  event.target.id;
 	console.log("You clicked on the card with id:", c);
-	
+
 	var suit;
 	var queryParams = "?id=" + c;
 
@@ -189,32 +189,25 @@ $("section").click(function(ev){
 
 	$("#playedsuit").html("");
 
-
-
-
 	$.ajax({
 		url: "layDownCard.php" + queryParams,
 		success: function (response) {
 			response = JSON.parse(response);
 			// if(response.message === "EIGHT"){
-				
-		
-			// } else if (response.message === "You can´t play this card") {
-			// 	alert(response.message);
-			// } else {
-			// 	// alert(response.message);
-			// }
+			if (response.message === "You can´t play this card") {
+				alert(response.message);
+			}
 		}
 	});
 
-	$.ajax({
-		url: "checkWinner.php",
-		success: function (response) { response = JSON.parse(response);
-	  	if(response.message === "You won the game!!!"){
-	  		alert(response.message);
-	  	} 
-	  }
-	});
+	// $.ajax({
+	// 	url: "checkWinner.php",
+	// 	success: function (response) { response = JSON.parse(response);
+	//   	if(response.message === "You won the game!!!"){
+	//   		alert(response.message);
+	//   	}
+	//   }
+	// });
 
 
 });
@@ -230,35 +223,37 @@ setInterval(function(){
 	$.getJSON("updateTableState.php", function(data){
 		$('#btn-discard-pile').html("");
 		var i = 0;
+		if(data.winner != false){
+			console.log(data.winner);
+		}
+		if(data.getTurn == true){
+			console.log("Your turn!");
+		}
 		data.discardPile.forEach(function(key){
-			console.log(key);
+			// console.log(key);
 			if(i === 0){
-				console.log(i);
+				// console.log(i);
 				appendCardElement("#btn-discard-pile", key);
 				// $('#btn-discard-pile').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
 				i++;
 			}
-			
-			$("#playedsuit").html("");
 
-			if(data.suit[0] == "s"){
-				$("#playedsuit").append("Play a spade");
-			}else if(data.suit[0] == "h"){
-				$("#playedsuit").append("Play a heart");
-			}else if(data.suit[0] == "c"){
-				$("#playedsuit").append("Play a club");
-			}else if(data.suit[0] == "d" ){
-				$("#playedsuit").append("Play a diamond");
+			$("#playedsuit").html("");
+			if(data.suit != null){
+				if(data.suit[0] == "s"){
+					$("#playedsuit").append("Play a spade");
+				}else if(data.suit[0] == "h"){
+					$("#playedsuit").append("Play a heart");
+				}else if(data.suit[0] == "c"){
+					$("#playedsuit").append("Play a club");
+				}else if(data.suit[0] == "d" ){
+					$("#playedsuit").append("Play a diamond");
+				}
 			}
 
 		});
-
-
-				
 
 	});
 
 
 }, 1000);
-
-

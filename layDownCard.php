@@ -24,13 +24,9 @@
     http_response_code(400);
   } else {
     $res["message"] = $table -> layDownInDiscardPile($indexCardObj); // kolla även om någon annan suit än vad som ligger där
-  if ($res['message'] === "YES" || $res['message'] === "EIGHT"){
-    $table->checkWinner($_SESSION["id"]);
-  }
-
-
-
-
+  // if ($res['message'] === "YES" || $res['message'] === "EIGHT"){
+  //   // $table->checkWinner($_SESSION["id"]);
+  // }
     echo json_encode($res);
     // return $res;
   }

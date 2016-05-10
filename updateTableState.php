@@ -1,6 +1,6 @@
 <?php
 
-spl_autoload_register(function ($className) {
+  spl_autoload_register(function ($className) {
     include 'classes/' . $className . '.class.php';
   });
 
@@ -11,6 +11,8 @@ spl_autoload_register(function ($className) {
 
   $result["discardPile"] = $table->getDiscardPile();
   $result["suit"] = $table->getFakeSuit();
+  $result["getTurn"] = $table->getTurn() == $_SESSION["id"];
+  $result["winner"] = $table->getWinner() === $_SESSION['id'];
 
   // echo json_encode($table->getDiscardPile());
 

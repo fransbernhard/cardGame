@@ -13,6 +13,8 @@
     public $numberOfCards = 5;
     private $deck;
     public $fakeSuit = null;
+    private $turn = 0;
+    private $winner = false;
 
     public function __construct(){
       $this->deck = new Deck;
@@ -53,33 +55,50 @@
     }
 
     public function laydownInDiscardPile($indexCardObj){
-      if ($indexCardObj->getPoint() == 50){
-          array_unshift($this->deck->discardPile, $indexCardObj);
-          return "EIGHT";
-          // IF NONE ABOVE - UNSHIFT TO HAND
-      }else if($this->fakeSuit != null) {
-        if($this->fakeSuit == $indexCardObj->getSuit()){
-          array_unshift($this->deck->discardPile, $indexCardObj);
-          $this->fakeSuit = null;
-          return "YES";
+      if($this->turn == $_SESSION['id'] || $this->winner != false) {
+
+        if ($indexCardObj->getPoint() == 50){
+            array_unshift($this->deck->discardPile, $indexCardObj);
+            $this->checkWinner();
+            $this->updateTurn();
+            return "EIGHT";
+            // IF NONE ABOVE - UNSHIFT TO HAND
+        } else if($this->fakeSuit != null) {
+
+          if($this->fakeSuit == $indexCardObj->getSuit()){
+            array_unshift($this->deck->discardPile, $indexCardObj);
+            $this->fakeSuit = null;
+            $this->checkWinner();
+            $this->updateTurn();
+            return "YES";
+          }
+          // echo php_error(json_encode($this->deck->discardPile[0]->getSuit()));
+        } else {
+
+          // IF CARD IS SAME FACE OR SAME SUIT - UNSHIFT TO DISCARDPILE
+          if($indexCardObj->getSuit() == $this->deck->discardPile[0]->getSuit()||
+            $indexCardObj->getFace() == $this->deck->discardPile[0]->getFace()) {
+            array_unshift($this->deck->discardPile, $indexCardObj);
+            $this->fakeSuit = null;
+            $this->checkWinner();
+            $this->updateTurn();
+            // echo json_encode($this->deck->discardPile);
+            return "YES";
+
+            // IF CARD IS EIGHT - UNSHIFT TO DISCARDPILE
+          }
         }
-        // echo php_error(json_encode($this->deck->discardPile[0]->getSuit())); 
-      }else{
-
-      // IF CARD IS SAME FACE OR SAME SUIT - UNSHIFT TO DISCARDPILE
-        if($indexCardObj->getSuit() == $this->deck->discardPile[0]->getSuit()||
-          $indexCardObj->getFace() == $this->deck->discardPile[0]->getFace()) {
-          array_unshift($this->deck->discardPile, $indexCardObj);
-          $this->fakeSuit = null;
-          // echo json_encode($this->deck->discardPile);
-          return "YES";
-
-        // IF CARD IS EIGHT - UNSHIFT TO DISCARDPILE
-        } 
-        
       }
       $this->getPlayer($_SESSION["id"])->updateHand($indexCardObj);
       return "You can´t play this card";
+    }
+
+    private function updateTurn(){
+      if(count($this->players) == $this->turn+1) {
+        $this->turn = 0;
+      } else {
+        $this->turn++;
+      }
     }
 
     public function getTheDiscardPile() {
@@ -90,24 +109,25 @@
       return $this->deck->getDiscardPile();
     }
 
-    public function checkWinner(){
+    private function checkWinner(){
       //check if this players hand is empty
-      foreach ($this->players as $player) {
+      foreach ($this->players as $index => $player) {
         if ($player->hand == []){
-          return "You won the game!!!";
-        } else {
-          return "NOT WINNER";
+          $this->winner = $index;
         }
       }
-      
+    }
+
+    public function getWinner(){
+      return $this->winner;
     }
 
     public function setNewSuit($suit) {
       $this->fakeSuit = $suit;
     }
 
-    public function checkTurn() {
-
+    public function getTurn() {
+      return $this->turn;
     }
 
     public function getFakeSuit() {
