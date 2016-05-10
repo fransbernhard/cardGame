@@ -7,7 +7,7 @@
     public $suit;
     public $face;
     public $deck = [];
-    public $numberOfCards = 5;
+    public $numberOfCards = 7;
     public $discardPile = [];
 
     function __construct() {

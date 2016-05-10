@@ -10,7 +10,7 @@
 
     public $players = [];
     private $maxPlayers = 6;
-    public $numberOfCards = 5;
+    public $numberOfCards = 7;
     private $deck;
     public $fakeSuit = null;
     private $turn = 0;

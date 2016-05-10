@@ -70,7 +70,6 @@ span.got-it {
 
 .greentable {
 	margin-top: 20px;
-	width: 100%;
 	background-color: green;
 	background-color: #145214;
 	border: 8px solid #8B4513;
@@ -81,28 +80,24 @@ span.got-it {
 
 .welcome {
 	padding-top: 15px;
+	margin-bottom: 10px;
 }
 
 section {
 	font-size: 12px;
+	margin: 10px 0;
 }
 
 /*-----------------BUTTONS -----------------*/
 button {
 	background: rgba(15, 15, 15, 0.5);
 	border: none;
-	padding: 0;
+	padding: 10;
 	border-radius: 4px;
-    box-shadow: 1px 1px 10px #000;
-}
-
-#btn-start-game {
-	margin-top: 40px;
-	padding: 10px;
+  box-shadow: 1px 1px 10px #000;
 }
 
 #btntakecard {
-	margin-top: 60px;
 	height: 120px;
 	width: 85px;
 	background-image: url(../imgs/card.png);
@@ -112,13 +107,8 @@ button {
 }
 
 #btn-discard-pile {
-	margin-top: 60px;
 	padding: 0;
 	box-shadow: none;
-}
-
-#btn-discard-pile img{
-	margin-right: -80px;
 }
 
 button#btn-discard-pile {
@@ -135,4 +125,8 @@ img.cardimg{
 	margin-top: 10px;
 	float: right;
 	padding: 10px;
+}
+
+..whos-turn {
+	margin-bottom: 10px;
 }

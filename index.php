@@ -66,24 +66,19 @@ spl_autoload_register(function ($className) {
 			<div class="greentable">
 				<div id="area">
 					<div class="welcome"></div>
-					<!-- <button id="btn-start-game">START NEW GAME</button><br><br> -->
-					<button id="btn-join">JOIN GAME</button><br>
-					<button id="btn-deal-out">DEAL OUT</button>
+					<h2 id="playedsuit"></h2>
+					<button id="btn-join">JOIN GAME</button>
+					<button id="btn-deal-out">DEAL OUT</button><br>
 					<button id="btntakecard" title="Click here to take a card from the deck"></button>
 					<button id="btn-discard-pile" title=""></button>
-					<section class="show-the-cards"><br><br>
-					</section>
+					<section class="show-the-cards"></section>
+					<div class="whos-turn"></div>
 				</div>
 			</div>
 
-			<button id="btn-reset">Reset the game and start over</button>
+			<button id="btn-reset">Reset & start over</button>
 
 		</div>
-		<footer>
-			<h1 id="playedsuit"></h1>
-		</footer>
-
-
 		<!--javascript libraries -->
 		<script src="js/jquery.js"></script>
 		<script src="js/main.js"></script>

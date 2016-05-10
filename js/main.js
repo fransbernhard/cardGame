@@ -29,8 +29,8 @@ content.click(function(){
 });
 
 // hides the "deck" until the game is started
-var deckOfCards = $("#btntakecard");
-deckOfCards.hide();
+// var deckOfCards = $("#btntakecard");
+// deckOfCards.hide();
 
 var discardPile = $("#btn-discard-pile");
 discardPile.hide();
@@ -45,15 +45,11 @@ function appendCardElement(element, key) {
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //----------------------------- STARTS THE GAME ----------------------
 
-// CLICK ON THE STARTBUTTON INITIATES THE GAME
-// $("#btn-start-game").click(function(){
-	$(document).ready(function (){
+$(document).ready(function (){
 	console.log("Now creating new table, new deck and a new game.....");
   $.getJSON("cards.php", function(data){
   	$('#area').html("");
 		data.forEach(function(key){
-			console.log(key);
-			// $("#area").append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
 			appendCardElement("#area", key);
 		});
 	});
@@ -65,41 +61,31 @@ function appendCardElement(element, key) {
 // makes a prompt so the player can register his/her name.
 $("#btn-join").click(function(){
 	console.log("Adding a new player with a prompt........");
-  var greeting = "What is your name?";
+  var greeting = "Please type your name.";
 
-	function insertPlayerName() {
+	function insertPlayerName(){
 		var p = $('#submit').val();
-		console.log("Shows a prompt to insert playername.");
 		return prompt(greeting, p);
 	}
 
-
-
-	function addingplayerNameToGame() {
+	function addingplayerNameToGame(){
    	var p = insertPlayerName();
     $.ajax({
 			url: "reg.player.php?name=" + p,
 			success: function (response) {
 				$('.welcome').append("Welcome " + p);
-				console.log("Playername succesfully registered. Displaying: Welcome ", p + " on the screen.");
-				}
+			}
 		});
  	}
 
 	addingplayerNameToGame();
 
 	// hides the join-button after click
-	var joinbutton = $("#btn-join");
-	joinbutton.hide();
+	var join = $("#btn-join");
+	join.hide();
 
-	// hides the button "start game" on click to prevent reloading page by mistake
- 	var button = $("#btn-start-game");
-	button.hide();
-
-//shows all the buttons when game is started
-	var newDeck = $("#btntakecard");
+	//shows the discardpile when game is started
 	var discardPile = $("#btn-discard-pile");
-	newDeck.show();
 	discardPile.show();
 
 });
@@ -113,22 +99,17 @@ $("#btn-deal-out").click(function(){
 			url: "dealOut.php",
 	});
 
-	//hides the deal-out-button after click
-
+	//hides the deal-out-button
+	var dealout = $("#btn-deal-out");
+	dealout.hide();
 
 	//shows the
 	$.getJSON("flipFirstCard.php", function(data){
   	$('#btn-discard-pile').html("");
-
-  // 	var dealoutbutton = $("#btn-deal-out");
-		// dealoutbutton.hide();
 		data.forEach(function(key){
 			console.log(key.filePath);
 			console.log("The first card in discardpile is:", key);
 			appendCardElement("#btn-discard-pile", key);
-
-
-			// $('#btn-discard-pile').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
 		});
 	});
 });
@@ -144,7 +125,6 @@ setInterval(function(){
 			// $('section.show-the-cards').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
 		});
 	});
-
 }, 1000);
 
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -155,7 +135,7 @@ $('#btntakecard').click(function(){
 		url: "takeCard.php",
 		success: function (response) { //response is value returned from php
 	  	// $('section').empty().append(response); //appends the respons to section and clears it on every click
-	  	console.log("hejjjeeee", response);
+	  	// console.log("hejjjeeee", response);
 	  }
 	});
 });
@@ -184,7 +164,6 @@ $("section").click(function(ev){
 
 	if(suit !== undefined) {
 		queryParams += "&suit=" + suit;
-
 	}
 
 	$("#playedsuit").html("");
@@ -199,22 +178,7 @@ $("section").click(function(ev){
 			}
 		}
 	});
-
-	// $.ajax({
-	// 	url: "checkWinner.php",
-	// 	success: function (response) { response = JSON.parse(response);
-	//   	if(response.message === "You won the game!!!"){
-	//   		alert(response.message);
-	//   	}
-	//   }
-	// });
-
-
 });
-
-
-
-
 
 
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -229,14 +193,16 @@ setInterval(function(){
 			$('.greentable').append("GAME OVER BITCHES");
 		}
 		if(data.getTurn == true){
-			console.log("Your turn!");
+			$('.whos-turn').html("");
+			$('.whos-turn').append("It´s your turn to play!");
+		}
+		if(data.getTurn == false){
+			$('.whos-turn').html("");
+			$('.whos-turn').append("It´s NOT your turn.");
 		}
 		data.discardPile.forEach(function(key){
-			// console.log(key);
 			if(i === 0){
-				// console.log(i);
 				appendCardElement("#btn-discard-pile", key);
-				// $('#btn-discard-pile').append('<img class="cardimg" src="' + key.filePath + '" id="' + key.id + '"></img>');
 				i++;
 			}
 
@@ -252,10 +218,6 @@ setInterval(function(){
 					$("#playedsuit").append("Play a diamond");
 				}
 			}
-
 		});
-
 	});
-
-
 }, 1000);
