@@ -191,19 +191,17 @@ setInterval(function(){
 		var i = 0;
 		if(data.winner != false){
 			console.log(data.winner);
-			$('.greentable').html("");		
-			$('.greentable').append("<h1>You won the game!!!!!!!</h1>");
+			// $('.greentable').html("");		
+			// $('.greentable').append("GAME OVER");
 
-			// if(data.winner != true){
-			// 	console.log('fucker!!!!!!!');
-			// 	$('.greentable').html("");		
-			// 	$('.greentable').append("wait for it");
-
-			// 	} else if(data.winner != p){
-			// 		console.log('whatup!!!!!!!');
-			// 		$('.greentable').html("");		
-			// 		$('.greentable').append("GAME OVER");
-			// 	}
+			if(data.winner == p){
+				console.log('whatup!!!!!!!');
+				$('.greentable').html("");		
+				$('.greentable').append("<h1>You won the game!!!!!!!</h1>");
+			} else {
+				$('.greentable').html("");		
+				$('.greentable').append("<h1>GAME OVER</h1>");
+			}
 		}
 		
 		if(data.getTurn == true){
@@ -212,7 +210,7 @@ setInterval(function(){
 		}
 		if(data.getTurn == false){
 			$('.whos-turn').html("");
-			$('.whos-turn').append("It´s NOT your turn.").css({'background': 'red'});
+			$('.whos-turn').append("It´s <b>NOT</b> your turn.").css({'background': 'red'});
 		}
 		data.discardPile.forEach(function(key){
 			if(i === 0){

@@ -104,6 +104,7 @@ button:focus{
 }
 
 #btntakecard {
+	margin-top: 20px;
 	height: 120px;
 	width: 85px;
 	background-image: url(../imgs/card.png);

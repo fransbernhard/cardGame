@@ -14,7 +14,11 @@
   $result["getTurn"] = $table->getTurn() == $_SESSION["id"];
   $result["winner"] = $table->getWinner() === $_SESSION['id'];
 
-  // echo json_encode($table->getDiscardPile());
+  $winnerId = $table->getWinner();
+
+  if($winnerId != null){
+    $result["winner"] = $table->getPlayer($winnerId)->getName();
+  }
 
   echo json_encode($result);
 

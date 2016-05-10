@@ -39,6 +39,10 @@
       $this->hand[] = $card; // Same as array_push
     }
 
+    public function getName(){
+      return $this->name;
+    }
+
   }
 
 ?>
