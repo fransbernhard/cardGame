@@ -59,6 +59,8 @@ $(document).ready(function (){
 // ----------------------------  ADDING PLAYERS TO GAME
 
 // makes a prompt so the player can register his/her name.
+var p;
+
 $("#btn-join").click(function(){
 	console.log("Adding a new player with a prompt........");
   var greeting = "Please type your name.";
@@ -69,7 +71,7 @@ $("#btn-join").click(function(){
 	}
 
 	function addingplayerNameToGame(){
-   	var p = insertPlayerName();
+   	p = insertPlayerName();
     $.ajax({
 			url: "reg.player.php?name=" + p,
 			success: function (response) {
@@ -190,15 +192,27 @@ setInterval(function(){
 		if(data.winner != false){
 			console.log(data.winner);
 			$('.greentable').html("");		
-			$('.greentable').append("GAME OVER BITCHES");
+			$('.greentable').append("<h1>You won the game!!!!!!!</h1>");
+
+			// if(data.winner != true){
+			// 	console.log('fucker!!!!!!!');
+			// 	$('.greentable').html("");		
+			// 	$('.greentable').append("wait for it");
+
+			// 	} else if(data.winner != p){
+			// 		console.log('whatup!!!!!!!');
+			// 		$('.greentable').html("");		
+			// 		$('.greentable').append("GAME OVER");
+			// 	}
 		}
+		
 		if(data.getTurn == true){
 			$('.whos-turn').html("");
-			$('.whos-turn').append("It´s your turn to play!");
+			$('.whos-turn').append("It´s your turn to play!").css({'background': 'green'});
 		}
 		if(data.getTurn == false){
 			$('.whos-turn').html("");
-			$('.whos-turn').append("It´s NOT your turn.");
+			$('.whos-turn').append("It´s NOT your turn.").css({'background': 'red'});
 		}
 		data.discardPile.forEach(function(key){
 			if(i === 0){

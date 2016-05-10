@@ -70,12 +70,14 @@ span.got-it {
 
 .greentable {
 	margin-top: 20px;
+	height: 450px;
 	background-color: green;
 	background-color: #145214;
 	border: 8px solid #8B4513;
 	border-radius: 30px;
 	box-shadow: inset 1px 1px 10px #000;
 	text-align: center;
+	position: relative;
 }
 
 .welcome {
@@ -95,6 +97,10 @@ button {
 	padding: 10;
 	border-radius: 4px;
   box-shadow: 1px 1px 10px #000;
+}
+
+button:focus{
+	outline: 0;
 }
 
 #btntakecard {
@@ -127,6 +133,12 @@ img.cardimg{
 	padding: 10px;
 }
 
-..whos-turn {
-	margin-bottom: 10px;
+.whos-turn {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	padding: 5px 0;
+	border-bottom-left-radius: 25px;
+	border-bottom-right-radius: 25px;
+	box-shadow: inset -0.3px -0.3px 5px #000;
 }
