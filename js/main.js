@@ -225,6 +225,8 @@ setInterval(function(){
 		var i = 0;
 		if(data.winner != false){
 			console.log(data.winner);
+			$('.greentable').html("");		
+			$('.greentable').append("GAME OVER BITCHES");
 		}
 		if(data.getTurn == true){
 			console.log("Your turn!");
