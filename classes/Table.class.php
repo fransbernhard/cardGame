@@ -71,7 +71,6 @@
             return "EIGHT";
             // IF NONE ABOVE - UNSHIFT TO HAND
         } else if($this->fakeSuit != null) {
-
           if($this->fakeSuit == $indexCardObj->getSuit()){
             array_unshift($this->deck->discardPile, $indexCardObj);
             $this->fakeSuit = null;
@@ -79,9 +78,7 @@
             $this->updateTurn();
             return "YES";
           }
-          // echo php_error(json_encode($this->deck->discardPile[0]->getSuit()));
         } else {
-
           // IF CARD IS SAME FACE OR SAME SUIT - UNSHIFT TO DISCARDPILE
           if($indexCardObj->getSuit() == $this->deck->discardPile[0]->getSuit()||
             $indexCardObj->getFace() == $this->deck->discardPile[0]->getFace()) {
@@ -89,10 +86,7 @@
             $this->fakeSuit = null;
             $this->checkWinner();
             $this->updateTurn();
-            // echo json_encode($this->deck->discardPile);
             return "YES";
-
-            // IF CARD IS EIGHT - UNSHIFT TO DISCARDPILE
           }
         }
       }
@@ -103,6 +97,7 @@
     private function updateTurn(){
       if(count($this->players) == $this->turn+1) {
         $this->turn = 0;
+        $this->checkWinner();
         $this->cpuMind();
       } else {
         $this->turn++;
@@ -149,6 +144,7 @@
       $cpu = $this->players[0];
       $topCard = $this->deck->getDiscardPile()[0];
       $resultCard = false;
+
       foreach ($cpu->getHand() as $card) {
         if($resultCard == false){
           if($card->getPoint() == 50){
@@ -156,16 +152,13 @@
             array_unshift($this->deck->discardPile, $card);
             $cpu->takeCardFromHand($card->getId());
             $resultCard = true;
-            //choose suit
-          }else if($this->fakeSuit != null){
-
+          } else if($this->fakeSuit != null){
             if($this->fakeSuit == $card->getSuit()){
               array_unshift($this->deck->discardPile, $card);
               $cpu->takeCardFromHand($card->getId());
               $resultCard = true;
             }
-
-          }else if($card->getSuit() == $topCard->getSuit() || $card->getFace() == $topCard->getFace()){
+          } else if($card->getSuit() == $topCard->getSuit() || $card->getFace() == $topCard->getFace()){
             //lay down card of suit
             array_unshift($this->deck->discardPile, $card);
             $cpu->takeCardFromHand($card->getId());
