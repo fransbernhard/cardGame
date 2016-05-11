@@ -95,6 +95,16 @@ $("#btn-join").click(function(){
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 // ---------------------------- DEALS OUT THE CARDS
 $("#btn-deal-out").click(function(){
+
+
+		$.getJSON("flipFirstCard.php", function(data){
+  	$('#btn-discard-pile').html("");
+		data.forEach(function(key){
+			console.log(key.filePath);
+			console.log("The first card in discardpile is:", key);
+			appendCardElement("#btn-discard-pile", key);
+		});
+	});
 // Dealing out the cards.
 	console.log("Dealing out 5 cards to each player........");
 	$.ajax({
@@ -106,14 +116,7 @@ $("#btn-deal-out").click(function(){
 	dealout.hide();
 
 	//shows the
-	$.getJSON("flipFirstCard.php", function(data){
-  	$('#btn-discard-pile').html("");
-		data.forEach(function(key){
-			console.log(key.filePath);
-			console.log("The first card in discardpile is:", key);
-			appendCardElement("#btn-discard-pile", key);
-		});
-	});
+
 });
 
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

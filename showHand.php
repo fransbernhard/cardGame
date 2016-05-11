@@ -13,6 +13,7 @@
   // header("Content-Type:application/json");
   $humanPlayer->showHand();
 
+
   $tableserialized = serialize($table);
   file_put_contents("game.dat", $tableserialized);
 
