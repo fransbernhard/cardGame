@@ -198,7 +198,6 @@ setInterval(function(){
 			// $('.greentable').append("GAME OVER");
 
 			if(data.winner == p){
-				console.log('whatup!!!!!!!');
 				$('.greentable').html("");		
 				$('.greentable').append("<h1>You won the game!!!!!!!</h1>");
 			} else {

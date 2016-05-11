@@ -10,7 +10,7 @@
 
     public $players = [];
     private $maxPlayers = 6;
-    public $numberOfCards = 7;
+    public $numberOfCards = 2;
     private $deck;
     public $fakeSuit = null;
     private $turn = 0;
@@ -145,15 +145,10 @@
 
    
 
-    public function cpuMind() {
-
+    public function cpuMind() {   
       $cpu = $this->players[0];
       $topCard = $this->deck->getDiscardPile()[0];
-      // json_encode(error_log($topCard));
-
       $resultCard = false;
-      //so the cpu cant play more then one card
-
       foreach ($cpu->getHand() as $card) {
         if($resultCard == false){
           if($card->getPoint() == 50){
@@ -162,29 +157,32 @@
             $cpu->takeCardFromHand($card->getId());
             $resultCard = true;
             //choose suit
+          }else if($this->fakeSuit != null){
+
+            if($this->fakeSuit == $card->getSuit()){
+              array_unshift($this->deck->discardPile, $card);
+              $cpu->takeCardFromHand($card->getId());
+              $resultCard = true;
+            }
+
           }else if($card->getSuit() == $topCard->getSuit() || $card->getFace() == $topCard->getFace()){
             //lay down card of suit
             array_unshift($this->deck->discardPile, $card);
             $cpu->takeCardFromHand($card->getId());
             $this->fakeSuit = null;
             $resultCard = true;
-
           }
-
         }
-
-  
       }
       if($resultCard == false){
+        
         $cpu->takeCardFromDeck($this->deck);
       }
-
       $this->checkWinner();
 
-
-      //loopar genom hand
-      // eller plockar tills den kan
-      //lägg kort
+      // if($cpu->getHand() == []){
+      //   $this->winner = false;
+      // }
 
       $this->turn = 1;
 
