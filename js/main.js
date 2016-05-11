@@ -75,7 +75,7 @@ $("#btn-join").click(function(){
     $.ajax({
 			url: "reg.player.php?name=" + p,
 			success: function (response) {
-				$('.welcome').append("Welcome " + p);
+				// $('.welcome').append("Welcome " + p);
 			}
 		});
  	}
@@ -235,4 +235,14 @@ setInterval(function(){
 			}
 		});
 	});
+
+	$.getJSON("showPlayers.php", function(data){
+  	var playerNames = "";
+
+  	data.forEach(function(key){
+			playerNames += " " + key.name + "<br>";
+		})
+  	$('.whos-playing').html(playerNames);
+	});
+
 }, 1000);

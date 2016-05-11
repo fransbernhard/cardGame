@@ -53,6 +53,10 @@
       return $this->players[$indexNumber];
     }
 
+    public function getPlayers(){
+      echo json_encode($this->players);
+    }
+
     public function getDeck(){
       return $this->deck;
     }

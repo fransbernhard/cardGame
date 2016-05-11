@@ -65,7 +65,8 @@ spl_autoload_register(function ($className) {
 
 			<div class="greentable">
 				<div id="area">
-					<div class="welcome"></div>
+					Players online:<br>
+					<div class="whos-playing"></div>
 					<h2 id="playedsuit"></h2>
 					<button id="btn-join">JOIN GAME</button>
 					<button id="btn-deal-out">DEAL OUT</button><br>
