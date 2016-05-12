@@ -202,7 +202,7 @@ setInterval(function(){
 				$('.greentable').append("<h1>You won the game!!!!!!!</h1>");
 			} else {
 				$('.greentable').html("");		
-				$('.greentable').append("<h1>GAME OVER</h1>");
+				$('.greentable').append("<h1>GAME OVER<br> You lost the game!!!<br>You suck bigtime!!</h1>");
 			}
 		}
 		

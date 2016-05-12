@@ -14,12 +14,13 @@
   $result["getTurn"] = $table->getTurn() == $_SESSION["id"];
   $result["winner"] = $table->getWinner() === $_SESSION['id'];
 
-
-  $winnerId = $table->getWinner();
   $cpuPlayer = $table->getPlayer(0);
   $result["cpu"] = $cpuPlayer->getHand();
 
-  if($winnerId != null){
+  $winnerId = $table->getWinner();
+ 
+
+  if($winnerId != null || $winnerId == "Computer"){
     $result["winner"] = $table->getPlayer($winnerId)->getName();
   }
 
