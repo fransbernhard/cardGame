@@ -6,6 +6,7 @@
 
     public $hand = [];
     public $name;
+    private $card;
 
     function __construct($name) {
       $this->name = $name;
@@ -41,6 +42,13 @@
 
     public function getName(){
       return $this->name;
+    }
+
+    public function getOneCard(){
+      foreach ($this->hand as $card) {
+        return $this->card = $card;
+        # code...
+      }
     }
 
   }

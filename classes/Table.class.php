@@ -10,7 +10,7 @@
 
     public $players = [];
     private $maxPlayers = 6;
-    public $numberOfCards = 2;
+    public $numberOfCards = 5;
     private $deck;
     public $fakeSuit = null;
     private $turn = 0;
@@ -149,10 +149,53 @@
       $cpu = $this->players[0];
       $topCard = $this->deck->getDiscardPile()[0];
       $resultCard = false;
+      $hearts = [];
+      $spades = [];
+      $clubs = [];
+      $diamonds = [];
+      foreach ($cpu->getHand() as $card) {      
+        if($card->getSuit() == "hearts"){
+          array_push($hearts, $cpu->getOneCard());
+        }else if($card->getSuit() == "spades"){
+          array_push($spades, $cpu->getOneCard());
+        }else if($card->getSuit() == "clubs"){
+          array_push($clubs, $cpu->getOneCard());
+        }else if($card->getSuit() == "diamonds"){
+          array_push($diamonds, $cpu->getOneCard());
+        }
+      }
+
       foreach ($cpu->getHand() as $card) {
         if($resultCard == false){
-          if($card->getPoint() == 50){
-            $this->fakeSuit = "diamonds";
+          if($card->getPoint() == 50){            
+            if(count($hearts)>count($spades) && count($hearts)>count($clubs) && count($hearts)>count($diamonds)){
+              $this->fakeSuit = "hearts";
+            }else if(count($spades)>count($hearts) && count($spades)>count($clubs) && count($spades)>count($diamonds)){
+              $this->fakeSuit = "spades";
+            }else if(count($clubs)>count($hearts) && count($clubs)>count($spades) && count($clubs)>count($diamonds)){
+              $this->fakeSuit = "clubs";
+            }else if(count($diamonds)>count($hearts) && count($diamonds)>count($spades) && count($diamonds)>count($clubs)){
+              $this->fakeSuit = "diamonds";
+            }else if(count($diamonds)==count($hearts)){
+              $this->fakeSuit = "diamonds";
+            }else if(count($spades)==count($hearts)){
+              $this->fakeSuit = "spades";
+            }else if(count($clubs)==count($hearts)){
+              $this->fakeSuit = "clubs";
+            }else if(count($clubs)==count($spades)){
+              $this->fakeSuit = "spades";
+            }else if(count($clubs)==count($diamonds)){
+              $this->fakeSuit = "diamonds";
+            }else if(count($clubs)==count($hearts)){
+              $this->fakeSuit = "hearts";
+            }else if(count($diamonds)==count($hearts)){
+              $this->fakeSuit = "diamonds";
+            }else if(count($diamonds)==count($spades)){
+              $this->fakeSuit = "spades";
+            }else if(count($diamonds)==count($clubs)){
+              $this->fakeSuit = "clubs";
+            }
+            
             array_unshift($this->deck->discardPile, $card);
             $cpu->takeCardFromHand($card->getId());
             $resultCard = true;
